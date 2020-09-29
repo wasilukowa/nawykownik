@@ -1,4 +1,4 @@
 const theme = {
-    background: '#A9DCB2',
+    mint: '#A9DCB2',
 
 }
