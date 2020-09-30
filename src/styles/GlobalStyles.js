@@ -6,7 +6,8 @@ const GlobalStyle = createGlobalStyle`
         font-size: 10px;
         padding: 0;
         margin: 0;
-        font-family: 'Playfair Regular'
+        font-family: 'Playfair Regular';
+        color: ${props => props.theme.black}
     }
     *, *:before, *:after {
         box-sizing: inherit;

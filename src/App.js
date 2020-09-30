@@ -1,20 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
 
+import styled, { ThemeProvider } from 'styled-components';
+import { HashRouter, Route } from 'react-router-dom';
 import theme from './styles/theme';
 import GlobalStyle from './styles/GlobalStyles';
 import GlobalFonts from './fonts/fonts';
-import { ThemeProvider } from 'styled-components';
 
 import Navigation from './components/Navigation';
-import { HashRouter, Route } from 'react-router-dom';
-
 import Home from './components/Home';
 import AddNew from './components/AddNew';
 import Archive from './components/Archive';
 import Settings from './components/Settings';
-
-
 
 const WrapperStyled = styled.div`
   height: 100vh;
@@ -22,7 +18,13 @@ const WrapperStyled = styled.div`
   color: black;
   display: flex;
   justify-content: center;
-  padding: 30px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  padding: 10px;
+
+  @media (min-width: 320px) {
+    padding: 20px;
+  }
 `;
 
 const WrapperInsideStyled = styled.div`
@@ -30,7 +32,7 @@ const WrapperInsideStyled = styled.div`
   min-height: 500px;
   width: 100vh;
   max-width: 900px;
-  min-width: 300px;
+  min-width: 260px;
   border-radius: 10px;
   box-shadow:
       0 2.8px 2.2px rgba(0, 0, 0, 0.02),
@@ -40,9 +42,11 @@ const WrapperInsideStyled = styled.div`
       0 41.8px 33.4px rgba(0, 0, 0, 0.05),
       0 100px 80px rgba(0, 0, 0, 0.07);
   padding: 10px;
+
+  @media (max-width: 320px) {
+    
+  }
 `;
-
-
 
 function App() {
   return (
@@ -50,9 +54,7 @@ function App() {
       <WrapperStyled>
         <GlobalFonts />
         <GlobalStyle />
-
         <HashRouter>
-
           <WrapperInsideStyled>
             <Navigation />
             <Route exact path='/' component={Home} />
@@ -60,9 +62,7 @@ function App() {
             <Route exact path='/archiwum' component={Archive} />
             <Route exact path='/ustawienia' component={Settings} />
           </WrapperInsideStyled>
-
         </HashRouter>
-
       </WrapperStyled>
     </ThemeProvider>
   );
