@@ -20,7 +20,7 @@ const WrapperStyled = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   flex-shrink: 0;
-  padding: 10px;
+  padding: 2em;
 
   @media (min-width: 320px) {
     padding: 20px;
@@ -41,7 +41,7 @@ const WrapperInsideStyled = styled.div`
       0 22.3px 17.9px rgba(0, 0, 0, 0.042),
       0 41.8px 33.4px rgba(0, 0, 0, 0.05),
       0 100px 80px rgba(0, 0, 0, 0.07);
-  padding: 10px;
+  padding: 20px;
 
   @media (max-width: 320px) {
     

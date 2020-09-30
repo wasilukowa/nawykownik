@@ -12,7 +12,7 @@ const NavigationContainer = styled.nav`
     align-items: center;
     flex-wrap: wrap;
     flex-grow: 1;
-    padding: 2em 0;
+    padding-bottom: 2em;
     .nav__router-link {
         text-decoration: none;
         color: ${props => props.theme.black};
