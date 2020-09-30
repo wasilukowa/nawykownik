@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 10px;
         padding: 0;
         margin: 0;
+        font-family: 'Playfair Regular'
     }
     *, *:before, *:after {
         box-sizing: inherit;

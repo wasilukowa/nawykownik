@@ -6,13 +6,20 @@ import GlobalStyle from './styles/GlobalStyles';
 import GlobalFonts from './fonts/fonts';
 import { ThemeProvider } from 'styled-components';
 
+import Navigation from './components/Navigation';
+import { HashRouter, Route } from 'react-router-dom';
+
 import Home from './components/Home';
+import AddNew from './components/AddNew';
+import Archive from './components/Archive';
+import Settings from './components/Settings';
+
+
 
 const WrapperStyled = styled.div`
   height: 100vh;
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
   color: black;
-  font-family: 'Playfair Black';
   display: flex;
   justify-content: center;
   padding: 30px;
@@ -21,7 +28,9 @@ const WrapperStyled = styled.div`
 const WrapperInsideStyled = styled.div`
   background-color: white;
   min-height: 500px;
-  min-width: 900px;
+  width: 100vh;
+  max-width: 900px;
+  min-width: 300px;
   border-radius: 10px;
   box-shadow:
       0 2.8px 2.2px rgba(0, 0, 0, 0.02),
@@ -41,9 +50,19 @@ function App() {
       <WrapperStyled>
         <GlobalFonts />
         <GlobalStyle />
-        <WrapperInsideStyled>
-          <Home />
-        </WrapperInsideStyled>
+
+        <HashRouter>
+
+          <WrapperInsideStyled>
+            <Navigation />
+            <Route exact path='/' component={Home} />
+            <Route exact path='/dodajnowy' component={AddNew} />
+            <Route exact path='/archiwum' component={Archive} />
+            <Route exact path='/ustawienia' component={Settings} />
+          </WrapperInsideStyled>
+
+        </HashRouter>
+
       </WrapperStyled>
     </ThemeProvider>
   );
