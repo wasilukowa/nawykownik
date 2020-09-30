@@ -6,49 +6,71 @@ import logo from '../LOGO-09.svg'
 
 const NavigationContainer = styled.nav`
     width: 100%;
-    /* border: 1px solid red; */
     list-style: none;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     flex-grow: 1;
+    padding: 2em 0;
     .nav__router-link {
         text-decoration: none;
         color: ${props => props.theme.black};
         padding: 0.6em;
-        font-size: 1.2em;
-        border: 1px solid green;
+        font-size: 1.4em;
+        transition: .7s;
+        &:hover{
+            color: ${props => props.theme.green};
+            transform: scale(1.1);
+        }
     }
     .nav__flex-logo {
         display: flex;
         justify-content: center;
-        border: 1px solid green;
-        flex-basis: 100%;
-
-        .nav__logo{
-        width: 200px;
-        }
-    }        
+        flex-basis: 90%;
+    }
+    .nav__logo {
+        width: 60vw;
+    }
     .nav__flex-menu-special {
             order: 3;
-            flex-basis: 100%;
+            flex-basis: 90%;
             text-align: center;
         }
+    .nav__router-link-active{
+        font-family: 'Playfair Bold';
+        color: ${props => props.theme.green};
+        transform: scale(1.2);
+    }
 
     @media (min-width: 350px){
+    .nav__router-link {
+        font-size: 1.6em;
+        }
+    }
+
+
+    @media (min-width: 450px){
         .nav__flex-menu-special {
             order: 0;
             flex-basis: auto;
         }
     }
 
-    @media (min-width: 550px){
+    @media (min-width: 660px){
         .nav__flex-logo {
             flex-basis: auto;
+            .nav__logo{
+                width: 240px;
+            }
         }
     }
 
+    @media (min-width: 900px){
+        .nav__router-link {
+        font-size: 2em;
+        }
+    }
 `;
 
 const Home = () => {
