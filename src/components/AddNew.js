@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { TasksArrayContext } from '../context/TasksArrayContext';
 import { Task } from '../utilities/task';
@@ -69,8 +69,12 @@ const AddNewContainerStyled = styled.div`
 const AddNew = () => {
 
     const { taskArray, setTaskArray } = useContext(TasksArrayContext);
-
+    let helpArray = [];
     const [newTask, setNewTask] = useState(new Task());
+
+    useEffect(() => {
+        helpArray = taskArray;
+    });
 
     console.log('hello from add new component and this is task array:', taskArray);
 
@@ -86,7 +90,8 @@ const AddNew = () => {
     const handleFormSubmit = e => {
         e.preventDefault();
         if (newTask.title.length > 5) {
-            setTaskArray([newTask])
+            helpArray.push(newTask)
+            setTaskArray(helpArray);
             localStorage.setItem('tasks', JSON.stringify(taskArray));
             setNewTask(new Task());
         }
