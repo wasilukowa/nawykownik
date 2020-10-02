@@ -76,8 +76,6 @@ const AddNew = () => {
         helpArray = taskArray;
     });
 
-    console.log('hello from add new component and this is task array:', taskArray);
-
     const handleTitleInput = event => {
         event.preventDefault();
         setNewTask({
@@ -95,8 +93,6 @@ const AddNew = () => {
             localStorage.setItem('tasks', JSON.stringify(taskArray));
             setNewTask(new Task());
         }
-        const taskFromLocal = JSON.parse(localStorage.getItem('tasks'));
-        console.table(taskFromLocal);
     }
 
 
