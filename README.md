@@ -1,3 +1,16 @@
+# Nawykownik App :)
+
+Aplication as of 02/10/2020 still needs to be finished but first draft of it can be found here:
+https://wasilukowa.github.io/nawykownik/#/
+
+### Used technologies:
+- React (also useContext and React Router)
+- Styled Components
+- Local Storage
+
+Enjoy
+------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
