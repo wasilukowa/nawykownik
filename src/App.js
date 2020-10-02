@@ -12,6 +12,8 @@ import AddNew from './components/AddNew';
 import Archive from './components/Archive';
 import Settings from './components/Settings';
 
+import TasksArrayContextProvider from './context/TasksArrayContext';
+
 const WrapperStyled = styled.div`
   height: 100vh;
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
@@ -51,19 +53,21 @@ const WrapperInsideStyled = styled.div`
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <WrapperStyled>
-        <GlobalFonts />
-        <GlobalStyle />
-        <HashRouter>
-          <WrapperInsideStyled>
-            <Navigation />
-            <Route exact path='/' component={Home} />
-            <Route exact path='/dodajnowy' component={AddNew} />
-            <Route exact path='/archiwum' component={Archive} />
-            <Route exact path='/ustawienia' component={Settings} />
-          </WrapperInsideStyled>
-        </HashRouter>
-      </WrapperStyled>
+      <TasksArrayContextProvider>
+        <WrapperStyled>
+          <GlobalFonts />
+          <GlobalStyle />
+          <HashRouter>
+            <WrapperInsideStyled>
+              <Navigation />
+              <Route exact path='/' component={Home} />
+              <Route exact path='/dodajnowy' component={AddNew} />
+              <Route exact path='/archiwum' component={Archive} />
+              <Route exact path='/ustawienia' component={Settings} />
+            </WrapperInsideStyled>
+          </HashRouter>
+        </WrapperStyled>
+      </TasksArrayContextProvider>
     </ThemeProvider>
   );
 }

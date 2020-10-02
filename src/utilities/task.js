@@ -45,7 +45,6 @@ const firstDay = (new Date(`${dateForHabitTracker.getFullYear()}-${dateForHabitT
 // starting date: 0: PON, 1: Wt, 2: Śr, 3: Czw, 4: Pia, 5: Sob, 6: Nie
 
 const daysInMonth = (new Date(dateForHabitTracker.getFullYear(), dateForHabitTracker.getMonth() + 1, 0)).getDate();
-console.log(daysInMonth);
 let arrayHelp = [];
 
 for (let i = 0; i < 42; i++) {

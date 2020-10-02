@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
+import { TasksArrayContext } from '../context/TasksArrayContext';
 import { Task } from '../utilities/task';
 
 const AddNewContainerStyled = styled.div`
@@ -24,6 +25,17 @@ const AddNewContainerStyled = styled.div`
         padding: 1em;
         font-size: 1.4em;
         outline: none;
+    }
+    button {
+        outline: none;
+        border: none;
+        background-color: ${props => props.theme.mint};
+        color: ${props => props.theme.green};
+        font-family: 'Playfair Bold';
+        font-size: 2em;
+        padding: 1em;
+        width: 100%;
+        cursor: pointer;
     }
 
     @media (min-width: 480px){
@@ -54,10 +66,13 @@ const AddNewContainerStyled = styled.div`
     }
 `;
 
-
 const AddNew = () => {
 
+    const { taskArray, setTaskArray } = useContext(TasksArrayContext);
+
     const [newTask, setNewTask] = useState(new Task());
+
+    console.log('hello from add new component and this is task array:', taskArray);
 
     const handleTitleInput = event => {
         event.preventDefault();
@@ -68,9 +83,21 @@ const AddNew = () => {
         )
     }
 
+    const handleFormSubmit = e => {
+        e.preventDefault();
+        if (newTask.title.length > 5) {
+            setTaskArray([newTask])
+            localStorage.setItem('tasks', JSON.stringify(taskArray));
+            setNewTask(new Task());
+        }
+        const taskFromLocal = JSON.parse(localStorage.getItem('tasks'));
+        console.table(taskFromLocal);
+    }
+
+
     return (
         <AddNewContainerStyled>
-            <div className='add-new__form-title-container'>
+            <form className='add-new__form-title-container'>
                 <h3>Nowy nawyk do monitorowania:</h3>
                 <textarea
                     name={'title'}
@@ -79,7 +106,8 @@ const AddNew = () => {
                     cols="30"
                     rows="4"
                     placeholder='Wpisz nawyk, jaki chcesz monitorować :)' />
-            </div>
+                <button onClick={e => handleFormSubmit(e)}>Dodaj</button>
+            </form>
         </AddNewContainerStyled>
 
     )
