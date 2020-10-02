@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { TasksArrayContext } from '../context/TasksArrayContext'
 
 const SettingsContainerStyled = styled.div`
     padding-top: 4em;
@@ -21,8 +22,11 @@ const SettingsContainerStyled = styled.div`
 `;
 
 const Settings = () => {
+
+    const { setTaskArray } = useContext(TasksArrayContext);
     const handleResetLocalStorage = e => {
         localStorage.clear('tasks');
+        setTaskArray([]);
         console.log('Wyczyszczone, zapomniane!');
     }
 

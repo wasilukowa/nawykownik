@@ -6,7 +6,6 @@ const Home = () => {
 
     const { taskArray, setTaskArray } = useContext(TasksArrayContext);
 
-    const [editState, setEditState] = useState(false)
     const [taskToBeEdited, setTaskToBeEdited] = useState(null)
 
     const [commentToBeShow, setComment] = useState('Pobieram dane...')
@@ -19,35 +18,34 @@ const Home = () => {
         console.log('handle archive method!')
     }
 
-    const handleEditingTask = () => {
-        console.log('handle editing method!')
+    const handleEditingTask = (taskEdited, indexOnTaskArray) => {
+        console.log('handle editing method!', taskEdited, indexOnTaskArray);
+        let helpArray = taskArray;
+        helpArray[indexOnTaskArray] = taskEdited;
+        setTaskArray(helpArray);
+        localStorage.setItem('tasks', JSON.stringify(helpArray));
+        console.log('zapisane?');
     }
 
     return (
-        editState === true
-            ?
-            <div> TU JEST KOMPONENT EDIT TASK</div>
-            // <EditTask
-            //     task={taskToBeEdited}
-            //     methodToEdit={handleEditingTask}
-            // />
-            :
-            <div>
-                {taskArray.length !== 0 ?
-                    taskArray.map(task => {
-                        return <TrackerMonthly key={task.key}
-                            task={task}
-                            toDelete={handleDeleteTask}
-                            toArchive={handleArchive}
-                            methodToEdit={handleEditingTask}
+        <div>
+            {taskArray.length !== 0 ?
+                taskArray.map((task, index) => {
+                    return <TrackerMonthly
+                        key={task.key}
+                        task={task}
+                        index={index}
+                        toDelete={handleDeleteTask}
+                        toArchive={handleArchive}
+                        methodToEdit={handleEditingTask}
 
-                        />
-                    })
-                    :
-                    <div className={'messageToBeShown'}>
-                        <p> {commentToBeShow}</p>
-                    </div>}
-            </div>
+                    />
+                })
+                :
+                <div className={'messageToBeShown'}>
+                    <p>Nie masz żodnych nawyków do monitorowania! Dodaj coś :)</p>
+                </div>}
+        </div>
     )
 }
 

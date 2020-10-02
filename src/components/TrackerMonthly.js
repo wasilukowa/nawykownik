@@ -115,14 +115,14 @@ const TrackerMonthlyContainerStyled = styled.div`
     }
 `;
 
-export const TrackerMonthly = ({ task, toDelete, toArchive, methodToEdit }) => {
+export const TrackerMonthly = ({ task, index, toDelete, toArchive, methodToEdit }) => {
 
     const [taskToShow, setTask] = useState(task)
-
     const [daysArr, setDayStatus] = useState([...task.daysArray])
-
+    console.log(daysArr);
 
     const handleStatusChange = (element, index) => {
+        console.log(daysArr);
         let helpArr = daysArr;
         if (element === 1) {
             helpArr[index] = 2;
@@ -139,12 +139,12 @@ export const TrackerMonthly = ({ task, toDelete, toArchive, methodToEdit }) => {
             ...taskToShow,
             daysArray: daysArr
         })
+        console.log(daysArr);
     }
 
-    // useEffect(() => {
-    //     modifyTasksInFirebase(taskToShow)
-    //         .catch(() => console.log('Something went wrong!'))
-    // }, [daysArr])
+    useEffect(() => {
+        methodToEdit(taskToShow, index);
+    }, [daysArr])
 
     const handleDelete = e => {
         if (typeof toDelete === 'function') {
@@ -198,8 +198,9 @@ export const TrackerMonthly = ({ task, toDelete, toArchive, methodToEdit }) => {
                             return <div key={index} className={'single-day'}></div>
                         } else if (el === 1) {
                             if (index < today + taskToShow.startingDay) {
-                                return <div key={index}
-                                    className={'single-day habit-to-be-checked'}
+                                return <div
+                                    key={index}
+                                    className='single-day habit-to-be-checked'
                                     onClick={() => handleStatusChange(el, index)}
                                 >
                                     {index - task.startingDay + 1}
