@@ -6,8 +6,11 @@ const theme = {
 
     // calendar cells sizes:
     gapSmall: '5px',
-    cellSmall: '25px'
-
+    cellSmall: '25px',
+    gapMedium: '10px',
+    cellMedium: '35px',
+    gapBig: '10px',
+    cellBig: '45px'
 }
 
 export default theme;

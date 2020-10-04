@@ -16,11 +16,11 @@ const TrackerMonthlyStyled = styled.div`
     .task-title {
         font-family: 'Playfair Bold';
         text-align: center;
-        font-size: 2.4em;
+        font-size: 2em;
         color: ${props => props.theme.green};
         padding: 10px 20px;
     }
-    .task-calendar{;
+    .task-calendar{
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -75,7 +75,6 @@ const TrackerMonthlyStyled = styled.div`
         }
 
         &.habit-done {
-            /* padding: 3px; */
             border: 1.5px solid ${props => props.theme.black};
             display: flex;
             justify-content: center;
@@ -102,17 +101,91 @@ const TrackerMonthlyStyled = styled.div`
         }
     }
     }
-
     .task-container__buttons {
-    color: lightGrey;
-    align-self: flex-end;
-    display: flex;
-    justify-content: flex-end;
+        color: lightGrey;
+        align-self: flex-end;
+        display: flex;
+        justify-content: flex-end;
 
-    .button-subtle{
-        padding: 0 0 20px 30px;
-        cursor: pointer;
+        .button-subtle{
+            padding: 0 0 20px 30px;
+            cursor: pointer;
+        }
     }
+    @media (min-width: 400px) {
+        .task-title {
+            font-size: 2.4em;
+        }
+
+        .task-calendar-days-names {
+            grid-template-columns: repeat(7, ${props => props.theme.cellMedium});
+            grid-template-rows: ${props => props.theme.cellMedium};
+            gap: ${props => props.theme.gapMedium};
+        }
+
+        .task-container___calendar {
+            grid-template-columns: repeat(7, ${props => props.theme.cellMedium});
+            grid-template-rows: repeat(6, ${props => props.theme.cellMedium});
+            gap: ${props => props.theme.gapMedium};
+
+            .single-day {
+
+                &.habit-not-done {
+                    &::before {
+                        content: '';
+                        height: calc(${props => props.theme.cellMedium} - 10px);
+                        width: calc(${props => props.theme.cellMedium} - 10px);
+                    }
+                }
+
+                &.habit-done {
+                    &::before {
+                        content: '';
+                        height: calc(${props => props.theme.cellMedium} - 10px);
+                        width: calc(${props => props.theme.cellMedium} - 10px);
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: 650px) {
+        .task-title {
+            font-size: 3em;
+        }
+
+        .task-calendar-days-names {
+            grid-template-columns: repeat(7, ${props => props.theme.cellBig});
+            grid-template-rows: ${props => props.theme.cellBig};
+            gap: ${props => props.theme.gapBig};
+        }
+
+        .task-container___calendar {
+            grid-template-columns: repeat(7, ${props => props.theme.cellBig});
+            grid-template-rows: repeat(6, ${props => props.theme.cellBig});
+            gap: ${props => props.theme.gapBig};
+
+            .single-day {
+                font-size: 2em;
+                &.habit-not-done {
+                    &::before {
+                        content: '';
+                        height: calc(${props => props.theme.cellBig} - 10px);
+                        width: calc(${props => props.theme.cellBig} - 10px);
+                    }
+                }
+
+                &.habit-done {
+                    &::before {
+                        content: '';
+                        height: calc(${props => props.theme.cellBig} - 10px);
+                        width: calc(${props => props.theme.cellBig} - 10px);
+                    }
+                }
+            }
+            .un-active {
+                font-size: 2em;
+        }
     }
 `;
 
@@ -120,7 +193,6 @@ export const TrackerMonthly = ({ task, index, toDelete, toArchive, methodToEdit 
 
     const [taskToShow, setTask] = useState(task)
     const [daysArr, setDayStatus] = useState([...task.daysArray])
-    console.log(daysArr);
 
     const handleStatusChange = (element, index) => {
         console.log(daysArr);
@@ -140,39 +212,38 @@ export const TrackerMonthly = ({ task, index, toDelete, toArchive, methodToEdit 
             ...taskToShow,
             daysArray: daysArr
         })
-        console.log(daysArr);
     }
 
     useEffect(() => {
         methodToEdit(taskToShow, index);
     }, [daysArr])
 
-    const handleDelete = e => {
-        if (typeof toDelete === 'function') {
-            e.preventDefault();
-            console.log(taskToShow);
-            toDelete(e, taskToShow)
-        } else {
-            console.log('nie poszło!');
-        }
-    }
+    // const handleDelete = e => {
+    //     if (typeof toDelete === 'function') {
+    //         e.preventDefault();
+    //         console.log(taskToShow);
+    //         toDelete(e, taskToShow)
+    //     } else {
+    //         console.log('nie poszło!');
+    //     }
+    // }
 
-    const handleArchive = e => {
-        if (typeof toArchive === 'function') {
-            e.preventDefault();
-            console.log(taskToShow);
-            toArchive(e, taskToShow)
-        } else {
-            console.log('nie poszło!');
-        }
-    }
+    // const handleArchive = e => {
+    //     if (typeof toArchive === 'function') {
+    //         e.preventDefault();
+    //         console.log(taskToShow);
+    //         toArchive(e, taskToShow)
+    //     } else {
+    //         console.log('nie poszło!');
+    //     }
+    // }
 
-    const handleEdit = e => {
-        e.preventDefault()
-        if (typeof methodToEdit === 'function') {
-            methodToEdit(taskToShow)
-        }
-    }
+    // const handleEdit = e => {
+    //     e.preventDefault()
+    //     if (typeof methodToEdit === 'function') {
+    //         methodToEdit(taskToShow)
+    //     }
+    // }
 
 
     let today = new Date().getDate();
