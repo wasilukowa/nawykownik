@@ -1,13 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 
-import PlayfairRegWoff from './playfair-display-v21-latin-regular.woff';
-import PlayfairRegWoff2 from './playfair-display-v21-latin-regular.woff2';
+import PlayfairRegWoff from './playfair-display-v21-latin-ext_latin-regular.woff';
+import PlayfairRegWoff2 from './playfair-display-v21-latin-ext_latin-regular.woff2';
 
-import Playfair600Woff from './playfair-display-v21-latin-600.woff';
-import Playfair600Woff2 from './playfair-display-v21-latin-600.woff2';
+import Playfair600Woff from './playfair-display-v21-latin-ext_latin-700.woff';
+import Playfair600Woff2 from './playfair-display-v21-latin-ext_latin-700.woff2';
 
-import Playfair900Woff from './playfair-display-v21-latin-900.woff';
-import Playfair900Woff2 from './playfair-display-v21-latin-900.woff2';
+import Playfair900Woff from './playfair-display-v21-latin-ext_latin-900.woff';
+import Playfair900Woff2 from './playfair-display-v21-latin-ext_latin-900.woff2';
 
 export default createGlobalStyle`
     @font-face {

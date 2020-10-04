@@ -1,29 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const TrackerMonthlyContainerStyled = styled.div`
+const TrackerMonthlyStyled = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 700px;
+    width: 100%;
     .task-date {
-        font-family: 'Playfair Bold';
+        font-family: 'Playfair Regular';
         padding-top: 10px;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         color: ${props => props.theme.black};
     }
     .task-title {
-        font-family: Arial;
-        width: 100%;
+        font-family: 'Playfair Bold';
         text-align: center;
-        min-height: 40px;
-        font-size: 2em;
-        color: ${props => props.theme.black};
+        font-size: 2.4em;
+        color: ${props => props.theme.green};
         padding: 5px 20px;
-        line-height: 1.3em;
     }
-
     .task-calendar-days {
         display: grid;
         grid-template-columns: repeat(7, 50px);
@@ -177,7 +173,7 @@ export const TrackerMonthly = ({ task, index, toDelete, toArchive, methodToEdit 
     let today = new Date().getDate();
 
     return (
-        <TrackerMonthlyContainerStyled>
+        <TrackerMonthlyStyled>
             <p className='task-date'>{taskToShow.month} {taskToShow.year}</p>
             <header className='task-title'>{taskToShow.title}</header>
             <div className='task-calendar'>
@@ -231,6 +227,6 @@ export const TrackerMonthly = ({ task, index, toDelete, toArchive, methodToEdit 
                     <a className={'button-subtle'} onClick={e => handleArchive(e)}>przenieś do archiwum!</a>
                 </div>
             </div>
-        </TrackerMonthlyContainerStyled>
+        </TrackerMonthlyStyled>
     )
 }
