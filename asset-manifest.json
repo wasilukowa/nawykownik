@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.js": "/nawykownik/static/js/main.4cd4ba0b.chunk.js",
-    "main.js.map": "/nawykownik/static/js/main.4cd4ba0b.chunk.js.map",
+    "main.js": "/nawykownik/static/js/main.b137d53c.chunk.js",
+    "main.js.map": "/nawykownik/static/js/main.b137d53c.chunk.js.map",
     "runtime-main.js": "/nawykownik/static/js/runtime-main.4f62d029.js",
     "runtime-main.js.map": "/nawykownik/static/js/runtime-main.4f62d029.js.map",
     "static/js/2.eee412c0.chunk.js": "/nawykownik/static/js/2.eee412c0.chunk.js",
     "static/js/2.eee412c0.chunk.js.map": "/nawykownik/static/js/2.eee412c0.chunk.js.map",
     "index.html": "/nawykownik/index.html",
-    "precache-manifest.baf1b334b1f5f13404cd29ca0598155d.js": "/nawykownik/precache-manifest.baf1b334b1f5f13404cd29ca0598155d.js",
+    "precache-manifest.62807934f2972def232dab959e2f655f.js": "/nawykownik/precache-manifest.62807934f2972def232dab959e2f655f.js",
     "service-worker.js": "/nawykownik/service-worker.js",
     "static/js/2.eee412c0.chunk.js.LICENSE.txt": "/nawykownik/static/js/2.eee412c0.chunk.js.LICENSE.txt",
     "static/media/LOGO-09.svg": "/nawykownik/static/media/LOGO-09.4b23e636.svg",
-    "static/media/playfair-display-v21-latin-600.woff": "/nawykownik/static/media/playfair-display-v21-latin-600.dbd8cbc8.woff",
-    "static/media/playfair-display-v21-latin-600.woff2": "/nawykownik/static/media/playfair-display-v21-latin-600.ed6391d9.woff2",
-    "static/media/playfair-display-v21-latin-900.woff": "/nawykownik/static/media/playfair-display-v21-latin-900.1ab2d437.woff",
-    "static/media/playfair-display-v21-latin-900.woff2": "/nawykownik/static/media/playfair-display-v21-latin-900.7a6669e7.woff2",
-    "static/media/playfair-display-v21-latin-regular.woff2": "/nawykownik/static/media/playfair-display-v21-latin-regular.0a77cd49.woff2",
-    "static/media/playfair-display-v21-latin-regular.woff": "/nawykownik/static/media/playfair-display-v21-latin-regular.1e6e350d.woff"
+    "static/media/playfair-display-v21-latin-ext_latin-700.woff": "/nawykownik/static/media/playfair-display-v21-latin-ext_latin-700.3ce8c222.woff",
+    "static/media/playfair-display-v21-latin-ext_latin-700.woff2": "/nawykownik/static/media/playfair-display-v21-latin-ext_latin-700.a1aad0c1.woff2",
+    "static/media/playfair-display-v21-latin-ext_latin-900.woff2": "/nawykownik/static/media/playfair-display-v21-latin-ext_latin-900.950f3762.woff2",
+    "static/media/playfair-display-v21-latin-ext_latin-900.woff": "/nawykownik/static/media/playfair-display-v21-latin-ext_latin-900.ee4fbcbc.woff",
+    "static/media/playfair-display-v21-latin-ext_latin-regular.woff": "/nawykownik/static/media/playfair-display-v21-latin-ext_latin-regular.3abcf909.woff",
+    "static/media/playfair-display-v21-latin-ext_latin-regular.woff2": "/nawykownik/static/media/playfair-display-v21-latin-ext_latin-regular.9d5119c0.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.4f62d029.js",
     "static/js/2.eee412c0.chunk.js",
-    "static/js/main.4cd4ba0b.chunk.js"
+    "static/js/main.b137d53c.chunk.js"
   ]
 }
