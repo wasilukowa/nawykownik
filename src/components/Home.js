@@ -1,6 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { TasksArrayContext } from '../context/TasksArrayContext';
 import { TrackerMonthly } from './TrackerMonthly';
+import { MessageStyled } from '../styles/Message';
+import { NavLink } from 'react-router-dom';
+
+
 
 const Home = () => {
 
@@ -42,9 +46,15 @@ const Home = () => {
                     />
                 })
                 :
-                <div className={'messageToBeShown'}>
-                    <p>Nie masz żodnych nawyków do monitorowania! Dodaj coś :)</p>
-                </div>}
+                <MessageStyled>
+                    <p>Nie masz żodnych nawyków do monitorowania!</p>
+                    <NavLink
+                        className='nav__router-link nav__flex-menu'
+                        exact to='/dodajnowy'
+                    >
+                        Dodaj coś! :)
+                    </NavLink>
+                </MessageStyled>}
         </div>
     )
 }

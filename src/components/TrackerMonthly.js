@@ -18,43 +18,49 @@ const TrackerMonthlyStyled = styled.div`
         text-align: center;
         font-size: 2.4em;
         color: ${props => props.theme.green};
-        padding: 5px 20px;
+        padding: 10px 20px;
     }
-    .task-calendar-days {
+    .task-calendar{;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .task-calendar-days-names {
         display: grid;
-        grid-template-columns: repeat(7, 50px);
-        grid-template-rows: 40px;
-        gap: 10px;
+        grid-template-columns: repeat(7, ${props => props.theme.cellSmall});
+        grid-template-rows: ${props => props.theme.cellSmall};
+        gap: ${props => props.theme.gapSmall};
 
         .day {
         font-family: Arial, sans-serif;
-        font-size: 15px;
-        color: grey;
+        font-size: 1.2em;
+        color: ${props => props.theme.mint};
         align-self: center;
         }
     }
     .task-container___calendar {
         display: grid;
-        grid-template-columns: repeat(7, 50px);
-        grid-template-rows: repeat(6, 50px);
-        gap: 10px;
+        grid-template-columns: repeat(7, ${props => props.theme.cellSmall});
+        grid-template-rows: repeat(6, ${props => props.theme.cellSmall});
+        gap: ${props => props.theme.gapSmall};
 
         .single-day {
+        padding: 3px;
         background-color: white;
-        font-size: 20px;
+        font-size: 1.4em;
         color: black;
-        padding: 6px;
+        padding: 3px;
         text-align: right;
         cursor: pointer;
 
         &.habit-to-be-checked {
-            border: 1.5px solid black;
+            border: 1.5px solid ${props => props.theme.black};
         }
-
 
         &.habit-not-done {
             padding: 3px;
-            border: 1.5px solid black;
+            border: 1.5px solid ${props => props.theme.black};
             display: flex;
             justify-content: center;
             align-items: center;
@@ -62,15 +68,15 @@ const TrackerMonthlyStyled = styled.div`
             &::before {
             content: '';
             display: block;
-            height: 30px;
-            width: 30px;
+            height: calc(${props => props.theme.cellSmall} - 10px);
+            width: calc(${props => props.theme.cellSmall} - 10px);
             background-color: silver;
             }
         }
 
         &.habit-done {
-            padding: 3px;
-            border: 1.5px solid black;
+            /* padding: 3px; */
+            border: 1.5px solid ${props => props.theme.black};
             display: flex;
             justify-content: center;
             align-items: center;
@@ -78,19 +84,18 @@ const TrackerMonthlyStyled = styled.div`
             &::before {
             content: '';
             display: block;
-            height: 40px;
-            width: 40px;
-            background-color: black;
+            height: calc(${props => props.theme.cellSmall} - 10px);
+            width: calc(${props => props.theme.cellSmall} - 10px);
+            background-color: ${props => props.theme.green};
             }
-
         }
         }
 
         .un-active {
         background-color: white;
-        font-size: 20px;
+        font-size: 1.4em;
         color: grey;
-        padding: 6px;
+        padding: 3px;
         text-align: right;
         cursor: pointer;
         border: 1.5px solid grey;
@@ -177,7 +182,7 @@ export const TrackerMonthly = ({ task, index, toDelete, toArchive, methodToEdit 
             <p className='task-date'>{taskToShow.month} {taskToShow.year}</p>
             <header className='task-title'>{taskToShow.title}</header>
             <div className='task-calendar'>
-                <div className='task-calendar-days'>
+                <div className='task-calendar-days-names'>
                     <div className='day'>PON</div>
                     <div className='day'>WT</div>
                     <div className='day'>ŚR</div>
@@ -203,29 +208,29 @@ export const TrackerMonthly = ({ task, index, toDelete, toArchive, methodToEdit 
                                 </div>
                             } else {
                                 return <div key={index}
-                                    className={'un-active'}
+                                    className='un-active'
                                 >
                                     {index - task.startingDay + 1}
                                 </div>
                             }
                         } else if (el === 2) {
                             return <div key={index}
-                                className={'single-day habit-not-done'}
+                                className='single-day habit-not-done'
                                 onClick={() => handleStatusChange(el, index)}>
                             </div>
                         } else {
                             return <div key={index}
-                                className={'single-day habit-done'}
+                                className='single-day habit-done'
                                 onClick={() => handleStatusChange(el, index)}>
                             </div>
                         }
                     })}
                 </div>
-                <div className="task-container__buttons">
+                {/* <div className="task-container__buttons">
                     <a className={'button-subtle'} onClick={e => handleEdit(e)}>edytuj</a>
                     <a className={'button-subtle'} onClick={e => handleDelete(e)}>usuń!</a>
                     <a className={'button-subtle'} onClick={e => handleArchive(e)}>przenieś do archiwum!</a>
-                </div>
+                </div> */}
             </div>
         </TrackerMonthlyStyled>
     )
