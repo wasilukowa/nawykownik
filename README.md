@@ -1,6 +1,6 @@
 # Nawykownik App :)
 
-Aplication as of 02/10/2020 still needs to be finished but first draft of it can be found here:
+Aplication as of 05/10/2020 still needs to be finished (work in progress) but first draft and basic functionality IS ON and can be found here:
 https://wasilukowa.github.io/nawykownik/#/
 
 ### Used technologies:
@@ -8,7 +8,7 @@ https://wasilukowa.github.io/nawykownik/#/
 - Styled Components
 - Local Storage
 
-Enjoy
+Enjoy :)
 ------------------------------
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
