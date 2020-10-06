@@ -189,13 +189,12 @@ const TrackerMonthlyStyled = styled.div`
     }
 `;
 
-export const TrackerMonthly = ({ task, index, toDelete, toArchive, methodToEdit }) => {
+export const TrackerMonthly = ({ task, index, methodToEdit }) => {
 
     const [taskToShow, setTask] = useState(task)
     const [daysArr, setDayStatus] = useState([...task.daysArray])
 
     const handleStatusChange = (element, index) => {
-        console.log(daysArr);
         let helpArr = daysArr;
         if (element === 1) {
             helpArr[index] = 2;
@@ -207,7 +206,6 @@ export const TrackerMonthly = ({ task, index, toDelete, toArchive, methodToEdit 
             helpArr[index] = 1;
             setDayStatus([...helpArr])
         }
-
         setTask({
             ...taskToShow,
             daysArray: daysArr
@@ -217,34 +215,6 @@ export const TrackerMonthly = ({ task, index, toDelete, toArchive, methodToEdit 
     useEffect(() => {
         methodToEdit(taskToShow, index);
     }, [daysArr])
-
-    // const handleDelete = e => {
-    //     if (typeof toDelete === 'function') {
-    //         e.preventDefault();
-    //         console.log(taskToShow);
-    //         toDelete(e, taskToShow)
-    //     } else {
-    //         console.log('nie poszło!');
-    //     }
-    // }
-
-    // const handleArchive = e => {
-    //     if (typeof toArchive === 'function') {
-    //         e.preventDefault();
-    //         console.log(taskToShow);
-    //         toArchive(e, taskToShow)
-    //     } else {
-    //         console.log('nie poszło!');
-    //     }
-    // }
-
-    // const handleEdit = e => {
-    //     e.preventDefault()
-    //     if (typeof methodToEdit === 'function') {
-    //         methodToEdit(taskToShow)
-    //     }
-    // }
-
 
     let today = new Date().getDate();
 
@@ -297,11 +267,6 @@ export const TrackerMonthly = ({ task, index, toDelete, toArchive, methodToEdit 
                         }
                     })}
                 </div>
-                {/* <div className="task-container__buttons">
-                    <a className={'button-subtle'} onClick={e => handleEdit(e)}>edytuj</a>
-                    <a className={'button-subtle'} onClick={e => handleDelete(e)}>usuń!</a>
-                    <a className={'button-subtle'} onClick={e => handleArchive(e)}>przenieś do archiwum!</a>
-                </div> */}
             </div>
         </TrackerMonthlyStyled>
     )

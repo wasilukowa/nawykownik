@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
-import { TasksArrayContext } from '../context/TasksArrayContext';
-import TaskContainer from './TasksContainer';
-import { MessageStyled } from '../styles/Message';
 import { NavLink } from 'react-router-dom';
+
+import { TasksArrayContext } from '../context/TasksArrayContext';
+import { MessageStyled } from '../styles/Message';
+import TasksContainer from './TasksContainer';
 
 
 const Home = () => {
 
-    const { taskArray, setTaskArray } = useContext(TasksArrayContext);
+    const { taskArray } = useContext(TasksArrayContext);
 
     return (
         <div>
             {taskArray.length !== 0 ?
-                <TaskContainer />
+                <TasksContainer />
                 :
                 <MessageStyled>
                     <p>Nie masz żodnych nawyków do monitorowania!</p>

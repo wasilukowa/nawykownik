@@ -1,16 +1,55 @@
 import React, { useContext } from 'react';
 import { TasksArrayContext } from '../context/TasksArrayContext';
 import { TrackerMonthly } from '../components/TrackerMonthly';
+import styled from 'styled-components';
 
-const TaskContainer = () => {
+const TrackerMonthlyContainer = styled.div`
+
+`;
+
+
+const TasksContainer = () => {
 
     const { taskArray, setTaskArray } = useContext(TasksArrayContext);
 
-    const handleDeleteTask = () => {
+    // const handleDeleteTask = () => {
+    // }
+
+    let archiveArray = JSON.parse(localStorage.getItem('archiveItems')) || [];
+    console.log('Archive from local storage: ', archiveArray);
+
+    const handleArchive = (event, taskToArchive) => {
+        event.preventDefault();
+        archiveArray.push(taskToArchive);
+        localStorage.setItem('archiveItems', JSON.stringify(archiveArray));
     }
 
-    const handleArchive = () => {
-    }
+    // const handleDelete = e => {
+    //     if (typeof toDelete === 'function') {
+    //         e.preventDefault();
+    //         console.log(taskToShow);
+    //         toDelete(e, taskToShow)
+    //     } else {
+    //         console.log('nie poszło!');
+    //     }
+    // }
+
+    // const handleArchive = e => {
+    //     if (typeof toArchive === 'function') {
+    //         e.preventDefault();
+    //         console.log(taskToShow);
+    //         toArchive(e, taskToShow)
+    //     } else {
+    //         console.log('nie poszło!');
+    //     }
+    // }
+    // const handleEdit = e => {
+    //     e.preventDefault()
+    //     if (typeof methodToEdit === 'function') {
+    //         methodToEdit(taskToShow)
+    //     }
+    // }
+
 
     const handleEditingTask = (taskEdited, indexOnTaskArray) => {
         let helpArray = taskArray;
@@ -20,17 +59,21 @@ const TaskContainer = () => {
     }
 
     return (
-        taskArray.map((task, index) => {
-            return <TrackerMonthly
-                key={task.key}
-                task={task}
-                index={index}
-                toDelete={handleDeleteTask}
-                toArchive={handleArchive}
-                methodToEdit={handleEditingTask}
-            />
-        })
+        <TrackerMonthlyContainer>
+            {taskArray.map((task, index) => {
+                return (
+                    <div key={task.key}>
+                        <TrackerMonthly
+                            task={task}
+                            index={index}
+                            methodToEdit={handleEditingTask}
+                        />
+                        <button onClick={e => handleArchive(e, task)}>ARCHIWIZUJ</button>
+                    </div>
+                )
+            })}
+        </TrackerMonthlyContainer>
     )
 }
 
-export default TaskContainer;
+export default TasksContainer;
