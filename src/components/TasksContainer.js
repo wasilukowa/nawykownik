@@ -4,7 +4,20 @@ import { TrackerMonthly } from '../components/TrackerMonthly';
 import styled from 'styled-components';
 
 const TrackerMonthlyContainer = styled.div`
-
+.buttons-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+    button {
+        border: none;
+        background-color: ${props => props.theme.mint};
+        color: ${props => props.theme.black};
+        font-family: 'Playfair Regilar';
+        padding: 1em 2em;
+        font-size: 2em;
+        margin: 0 10px;
+    }
 `;
 
 
@@ -28,32 +41,13 @@ const TasksContainer = () => {
         return array.filter(task => task.key !== taskToBeDeleted.key);
     }
 
-    // const handleDelete = e => {
-    //     if (typeof toDelete === 'function') {
-    //         e.preventDefault();
-    //         console.log(taskToShow);
-    //         toDelete(e, taskToShow)
-    //     } else {
-    //         console.log('nie poszło!');
-    //     }
-    // }
+    const handleDelete = (event, taskToArchive) => {
+        event.preventDefault();
 
-    // const handleArchive = e => {
-    //     if (typeof toArchive === 'function') {
-    //         e.preventDefault();
-    //         console.log(taskToShow);
-    //         toArchive(e, taskToShow)
-    //     } else {
-    //         console.log('nie poszło!');
-    //     }
-    // }
-    // const handleEdit = e => {
-    //     e.preventDefault()
-    //     if (typeof methodToEdit === 'function') {
-    //         methodToEdit(taskToShow)
-    //     }
-    // }
-
+        let arrayAfterDelete = deleteTask(taskToArchive, taskArray);
+        setTaskArray(arrayAfterDelete);
+        localStorage.setItem('items', JSON.stringify(arrayAfterDelete));
+    }
 
     const handleEditingTask = (taskEdited, indexOnTaskArray) => {
         let helpArray = taskArray;
@@ -72,7 +66,10 @@ const TasksContainer = () => {
                             index={index}
                             methodToEdit={handleEditingTask}
                         />
-                        <button onClick={e => handleArchive(e, task)}>ARCHIWIZUJ</button>
+                        <div className="buttons-container">
+                            <button onClick={e => handleArchive(e, task)}>ARCHIWIZUJ</button>
+                            <button onClick={e => handleDelete(e, task)}>USUŃ</button>
+                        </div>
                     </div>
                 )
             })}
