@@ -12,16 +12,20 @@ const TasksContainer = () => {
 
     const { taskArray, setTaskArray } = useContext(TasksArrayContext);
 
-    // const handleDeleteTask = () => {
-    // }
-
-    let archiveArray = JSON.parse(localStorage.getItem('archiveItems')) || [];
-    console.log('Archive from local storage: ', archiveArray);
-
     const handleArchive = (event, taskToArchive) => {
         event.preventDefault();
+
+        let archiveArray = JSON.parse(localStorage.getItem('archiveItems')) || [];
         archiveArray.push(taskToArchive);
         localStorage.setItem('archiveItems', JSON.stringify(archiveArray));
+
+        let arrayAfterDelete = deleteTask(taskToArchive, taskArray);
+        setTaskArray(arrayAfterDelete);
+        localStorage.setItem('items', JSON.stringify(arrayAfterDelete));
+    }
+
+    const deleteTask = (taskToBeDeleted, array) => {
+        return array.filter(task => task.key !== taskToBeDeleted.key);
     }
 
     // const handleDelete = e => {

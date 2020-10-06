@@ -77,7 +77,7 @@ const AddNew = () => {
 
     useEffect(() => {
         helpArray = taskArray;
-    }, []);
+    });
 
     const handleTitleInput = event => {
         event.preventDefault();
