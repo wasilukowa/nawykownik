@@ -3,7 +3,6 @@ import { TasksArrayContext } from '../context/TasksArrayContext';
 import { TrackerMonthly } from './TrackerMonthly';
 import { MessageStyled } from '../styles/Message';
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
 
 
 const Home = () => {

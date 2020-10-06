@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { TasksArrayContext } from '../context/TasksArrayContext';
 import { Task } from '../utilities/task';
+import { CommentMessage } from '../styles/CommentMessage';
+
 
 const AddNewContainerStyled = styled.div`
     width: 100%;
@@ -71,10 +73,11 @@ const AddNew = () => {
     const { taskArray, setTaskArray } = useContext(TasksArrayContext);
     let helpArray = [];
     const [newTask, setNewTask] = useState(new Task());
+    const [comment, setComment] = useState('');
 
     useEffect(() => {
         helpArray = taskArray;
-    });
+    }, []);
 
     const handleTitleInput = event => {
         event.preventDefault();
@@ -92,24 +95,40 @@ const AddNew = () => {
             setTaskArray(helpArray);
             localStorage.setItem('tasks', JSON.stringify(taskArray));
             setNewTask(new Task());
+            setComment('Nawyk dodany do monitorowania. Przejdź do Home');
+            setTimeout(() => {
+                setComment('');
+            }, 5000)
+        } else {
+            setNewTask(new Task());
+            setComment('Nazwa nawyku powinna mieć co najmniej 5 znaków. Spróbuj ponownie.');
+            setTimeout(() => {
+                setComment('');
+            }, 5000)
         }
     }
 
 
     return (
-        <AddNewContainerStyled>
-            <form className='add-new__form-title-container'>
-                <h3>Nowy nawyk do monitorowania:</h3>
-                <textarea
-                    name={'title'}
-                    value={newTask.title}
-                    onChange={e => handleTitleInput(e)}
-                    cols="30"
-                    rows="4"
-                    placeholder='Wpisz nawyk, jaki chcesz monitorować :)' />
-                <button onClick={e => handleFormSubmit(e)}>Dodaj</button>
-            </form>
-        </AddNewContainerStyled>
+        <>
+            <AddNewContainerStyled>
+                <form className='add-new__form-title-container'>
+                    <h3>Nowy nawyk do monitorowania:</h3>
+                    <textarea
+                        name={'title'}
+                        value={newTask.title}
+                        onChange={e => handleTitleInput(e)}
+                        cols="30"
+                        rows="4"
+                        placeholder='Wpisz nawyk, jaki chcesz monitorować :)' />
+                    <button onClick={e => handleFormSubmit(e)}>Dodaj</button>
+                </form>
+            </AddNewContainerStyled>
+            <CommentMessage>
+                {comment !== '' && <p>{comment}</p>}
+            </CommentMessage>
+
+        </>
 
     )
 }
