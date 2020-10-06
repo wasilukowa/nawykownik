@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const dateForHabitTracker = new Date()
 
 // name of the month to be placed in the Task Object - in polish
@@ -65,6 +67,7 @@ export class Task {
     status = 'active';
     price = '';
     daysArray = arrayHelp;
+    key = uuidv4();
 }
 
 // 0 - day not applicable
