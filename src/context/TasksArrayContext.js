@@ -1,9 +1,10 @@
 import React, { createContext, useState } from 'react';
+import { takeArrayFromLocalStorage } from '../utilities/localStorageUsage';
 
 export const TasksArrayContext = createContext();
 
 const TasksArrayContextProvider = props => {
-    const [taskArray, setTaskArray] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
+    const [taskArray, setTaskArray] = useState(takeArrayFromLocalStorage('tasksActive') || []);
 
     return (
         <TasksArrayContext.Provider value={{ taskArray, setTaskArray }}>

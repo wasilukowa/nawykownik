@@ -7,6 +7,8 @@ export const TrackerArchive = ({ task, index, methodToEdit }) => {
     const [daysArr, setDayStatus] = useState([...task.daysArray])
     console.log(daysArr);
 
+
+
     return (
         <TrackerMonthlyStyled>
             <p className='task-date'>{taskToShow.month} {taskToShow.year} / ARCHIWALNE</p>

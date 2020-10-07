@@ -3,12 +3,20 @@ import { TasksArrayContext } from '../context/TasksArrayContext';
 import { TrackerMonthly } from '../components/TrackerMonthly';
 import styled from 'styled-components';
 
+import {
+    takeArrayFromLocalStorage,
+    saveArrayToLocalStorage,
+    returnArrayWithoutATask,
+    addTaskToAnArrayFromLocalStorage,
+    removeAnItemFromArrayFromLocalStorage
+} from '../utilities/localStorageUsage';
+
 const TrackerMonthlyContainer = styled.div`
-.buttons-container{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
+    .buttons-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
     button {
         border: none;
         background-color: ${props => props.theme.mint};
@@ -27,33 +35,23 @@ const TasksContainer = () => {
 
     const handleArchive = (event, taskToArchive) => {
         event.preventDefault();
-
-        let archiveArray = JSON.parse(localStorage.getItem('archiveItems')) || [];
-        archiveArray.push(taskToArchive);
-        localStorage.setItem('archiveItems', JSON.stringify(archiveArray));
-
-        let arrayAfterDelete = deleteTask(taskToArchive, taskArray);
-        setTaskArray(arrayAfterDelete);
-        localStorage.setItem('items', JSON.stringify(arrayAfterDelete));
-    }
-
-    const deleteTask = (taskToBeDeleted, array) => {
-        return array.filter(task => task.key !== taskToBeDeleted.key);
+        addTaskToAnArrayFromLocalStorage('tasksArchive', taskToArchive);
+        removeAnItemFromArrayFromLocalStorage('tasksActive', taskToArchive);
+        setTaskArray(takeArrayFromLocalStorage('tasksActive'));
     }
 
     const handleDelete = (event, taskToArchive) => {
         event.preventDefault();
-
-        let arrayAfterDelete = deleteTask(taskToArchive, taskArray);
+        let arrayAfterDelete = returnArrayWithoutATask(taskToArchive, taskArray);
         setTaskArray(arrayAfterDelete);
-        localStorage.setItem('items', JSON.stringify(arrayAfterDelete));
+        localStorage.setItem('itemsActive', JSON.stringify(arrayAfterDelete));
     }
 
     const handleEditingTask = (taskEdited, indexOnTaskArray) => {
         let helpArray = taskArray;
         helpArray[indexOnTaskArray] = taskEdited;
         setTaskArray(helpArray);
-        localStorage.setItem('tasks', JSON.stringify(helpArray));
+        localStorage.setItem('tasksActive', JSON.stringify(helpArray));
     }
 
     return (

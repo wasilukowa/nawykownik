@@ -1,11 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { TasksArrayContext } from '../context/TasksArrayContext';
-import { Task } from '../utilities/task';
 import { CommentMessage } from '../styles/CommentMessage';
+import { Task } from '../utilities/task';
+
+import {
+    addTaskToAnArrayFromLocalStorage
+} from '../utilities/localStorageUsage';
 
 
-const AddNewContainerStyled = styled.div`
+const AddNewStyled = styled.div`
     width: 100%;
     background-color: ${props => props.theme.green};
     display: flex;
@@ -70,30 +73,21 @@ const AddNewContainerStyled = styled.div`
 
 const AddNew = () => {
 
-    const { taskArray, setTaskArray } = useContext(TasksArrayContext);
-    let helpArray = [];
     const [newTask, setNewTask] = useState(new Task());
     const [comment, setComment] = useState('');
-
-    useEffect(() => {
-        helpArray = taskArray;
-    });
 
     const handleTitleInput = event => {
         event.preventDefault();
         setNewTask({
             ...newTask,
             title: (event.target.value)
-        }
-        )
+        })
     }
 
-    const handleFormSubmit = e => {
-        e.preventDefault();
+    const handleFormSubmit = event => {
+        event.preventDefault();
         if (newTask.title.length > 5) {
-            helpArray.push(newTask)
-            setTaskArray(helpArray);
-            localStorage.setItem('tasks', JSON.stringify(taskArray));
+            addTaskToAnArrayFromLocalStorage('tasksActive', newTask)
             setNewTask(new Task());
             setComment('Nawyk dodany do monitorowania. Przejdź do Home');
             setTimeout(() => {
@@ -108,10 +102,9 @@ const AddNew = () => {
         }
     }
 
-
     return (
         <>
-            <AddNewContainerStyled>
+            <AddNewStyled>
                 <form className='add-new__form-title-container'>
                     <h3>Nowy nawyk do monitorowania:</h3>
                     <textarea
@@ -120,16 +113,20 @@ const AddNew = () => {
                         onChange={e => handleTitleInput(e)}
                         cols="30"
                         rows="4"
-                        placeholder='Wpisz nawyk, jaki chcesz monitorować :)' />
-                    <button onClick={e => handleFormSubmit(e)}>Dodaj</button>
+                        placeholder='Wpisz nawyk, jaki chcesz monitorować :)'
+                        onKeyDown={e => e.keyCode === 13 && handleFormSubmit(e)}
+                    />
+                    <button
+                        onClick={e => handleFormSubmit(e)}
+                    >
+                        Dodaj
+                    </button>
                 </form>
-            </AddNewContainerStyled>
+            </AddNewStyled>
             <CommentMessage>
                 {comment !== '' && <p>{comment}</p>}
             </CommentMessage>
-
         </>
-
     )
 }
 

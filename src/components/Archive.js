@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MessageStyled } from '../styles/Message';
 import { TrackerArchive } from '../components/TrackerArchive';
 
 const Archive = () => {
 
-    const archiveTaskArray = JSON.parse(localStorage.getItem('archiveItems')) || [];
+    const [archiveTaskArray, setArchiveTaskArray] = useState(JSON.parse(localStorage.getItem('archiveItems')) || []);
 
-    const handleEditingTask = () => {
-        console.log('Will do nothing :)')
+    const deleteTask = (taskToBeDeleted, array) => {
+        return array.filter(task => task.key !== taskToBeDeleted.key);
+    }
+
+    const handleDelete = (event, taskToDelete) => {
+        event.preventDefault();
+
+        let arrayAfterDelete = deleteTask(taskToDelete, archiveTaskArray);
+        setArchiveTaskArray(arrayAfterDelete);
+        localStorage.setItem('archiveItems', JSON.stringify(arrayAfterDelete));
     }
 
     return (
@@ -19,13 +27,15 @@ const Archive = () => {
                 :
                 archiveTaskArray.map((task, index) => {
                     return (
-                        <div key={task.key}>
-                            <TrackerArchive
-                                task={task}
-                                index={index}
-                                methodToEdit={handleEditingTask}
-                            />
-                        </div>
+                        <>
+                            <div key={task.key}>
+                                <TrackerArchive
+                                    task={task}
+                                    index={index}
+                                />
+                            </div>
+                            <button onClick={e => handleDelete(e, task)}>USUŃ</button>
+                        </>
                     )
                 })
             }
