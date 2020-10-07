@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { TasksArrayContext } from '../context/TasksArrayContext';
 import { MessageStyled } from '../styles/Message';
-import TasksContainer from './TasksContainer';
-
+import TasksContainer from './TasksActiveContainer';
+import { takeArrayFromLocalStorage } from '../utilities/localStorageUsage';
 
 const Home = () => {
 
-    const { taskArray } = useContext(TasksArrayContext);
+    const [taskArray] = useState(takeArrayFromLocalStorage('tasksActive'));
 
     return (
         <div>

@@ -16,6 +16,12 @@ export function addTaskToAnArrayFromLocalStorage(itemNameInLocalStorage, taskToB
     saveArrayToLocalStorage(itemNameInLocalStorage, array);
 }
 
+export function saveEditedTaskInArrayInLocalStorage(itemNameInLocalStorage, taskEdited, indexOfTaskToBeEdited) {
+    let array = takeArrayFromLocalStorage(itemNameInLocalStorage);
+    array[indexOfTaskToBeEdited] = taskEdited;
+    saveArrayToLocalStorage(itemNameInLocalStorage, array);
+}
+
 export function removeAnItemFromArrayFromLocalStorage(itemNameInLocalStorage, taskToBeDeleted) {
     let array = takeArrayFromLocalStorage(itemNameInLocalStorage);
     let arrayAfterDelete = returnArrayWithoutATask(taskToBeDeleted, array);

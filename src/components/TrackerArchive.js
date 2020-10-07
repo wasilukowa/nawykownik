@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { TrackerMonthlyStyled } from '../styles/TrackerMonthlyStyled';
 
-export const TrackerArchive = ({ task, index, methodToEdit }) => {
+export const TrackerArchive = ({ task }) => {
 
     const [taskToShow] = useState(task)
     const [daysArr] = useState([...task.daysArray])
-    console.log(daysArr);
-
-
 
     return (
         <TrackerMonthlyStyled>

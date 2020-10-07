@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { TrackerMonthlyStyled } from '../styles/TrackerMonthlyStyled';
+import { saveEditedTaskInArrayInLocalStorage } from '../utilities/localStorageUsage';
 
-export const TrackerMonthly = ({ task, index, methodToEdit }) => {
+export const TrackerMonthly = ({ task, indexOfTask }) => {
 
     const [taskToShow, setTask] = useState(task)
     const [daysArr, setDayStatus] = useState([...task.daysArray])
+    let today = new Date().getDate();
 
     const handleStatusChange = (element, index) => {
         let helpArr = daysArr;
@@ -25,10 +27,8 @@ export const TrackerMonthly = ({ task, index, methodToEdit }) => {
     }
 
     useEffect(() => {
-        methodToEdit(taskToShow, index);
-    }, [daysArr])
-
-    let today = new Date().getDate();
+        saveEditedTaskInArrayInLocalStorage('tasksActive', taskToShow, indexOfTask);
+    }, [daysArr]);
 
     return (
         <TrackerMonthlyStyled>
@@ -47,7 +47,6 @@ export const TrackerMonthly = ({ task, index, methodToEdit }) => {
 
                 <div className='task-container___calendar'>
                     {daysArr.map((el, index) => {
-
                         if (el === 0) {
                             return <div key={index} className={'single-day'}></div>
                         } else if (el === 1) {

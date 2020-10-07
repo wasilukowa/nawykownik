@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TrackerMonthly } from '../components/TrackerMonthly';
+import { TrackerMonthly } from './TrackerMonthly';
 import styled from 'styled-components';
 
 import {
@@ -27,7 +27,7 @@ const TrackerMonthlyStyled = styled.div`
 
 const TasksContainer = () => {
 
-    const [tasksArray, setTasksArray] = useState(takeArrayFromLocalStorage('tasksActive'));
+    const [tasksArray, setTasksArray] = useState(takeArrayFromLocalStorage('tasksActive') || []);
 
     const handleArchive = (event, taskToArchive) => {
         event.preventDefault();
@@ -42,13 +42,6 @@ const TasksContainer = () => {
         setTasksArray(takeArrayFromLocalStorage('tasksActive'));
     }
 
-    const handleEditingTask = (taskEdited, indexOnTaskArray) => {
-        let helpArray = tasksArray;
-        helpArray[indexOnTaskArray] = taskEdited;
-        setTasksArray(helpArray);
-        localStorage.setItem('tasksActive', JSON.stringify(helpArray));
-    }
-
     return (
         <TrackerMonthlyStyled>
             {tasksArray.map((task, index) => {
@@ -56,8 +49,7 @@ const TasksContainer = () => {
                     <div key={task.key}>
                         <TrackerMonthly
                             task={task}
-                            index={index}
-                            methodToEdit={handleEditingTask}
+                            indexOfTask={index}
                         />
                         <div className="buttons-container">
                             <button onClick={e => handleArchive(e, task)}>ARCHIWIZUJ</button>
