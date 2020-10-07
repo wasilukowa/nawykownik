@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { CommentMessage } from '../styles/CommentMessage';
 import { Task } from '../utilities/task';

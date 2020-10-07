@@ -1,17 +1,14 @@
-import React, { useContext } from 'react';
-import { TasksArrayContext } from '../context/TasksArrayContext';
+import React, { useState } from 'react';
 import { TrackerMonthly } from '../components/TrackerMonthly';
 import styled from 'styled-components';
 
 import {
     takeArrayFromLocalStorage,
-    saveArrayToLocalStorage,
-    returnArrayWithoutATask,
     addTaskToAnArrayFromLocalStorage,
     removeAnItemFromArrayFromLocalStorage
 } from '../utilities/localStorageUsage';
 
-const TrackerMonthlyContainer = styled.div`
+const TrackerMonthlyStyled = styled.div`
     .buttons-container{
         width: 100%;
         display: flex;
@@ -28,35 +25,33 @@ const TrackerMonthlyContainer = styled.div`
     }
 `;
 
-
 const TasksContainer = () => {
 
-    const { taskArray, setTaskArray } = useContext(TasksArrayContext);
+    const [tasksArray, setTasksArray] = useState(takeArrayFromLocalStorage('tasksActive'));
 
     const handleArchive = (event, taskToArchive) => {
         event.preventDefault();
         addTaskToAnArrayFromLocalStorage('tasksArchive', taskToArchive);
         removeAnItemFromArrayFromLocalStorage('tasksActive', taskToArchive);
-        setTaskArray(takeArrayFromLocalStorage('tasksActive'));
+        setTasksArray(takeArrayFromLocalStorage('tasksActive'));
     }
 
-    const handleDelete = (event, taskToArchive) => {
+    const handleDelete = (event, taskToDelete) => {
         event.preventDefault();
-        let arrayAfterDelete = returnArrayWithoutATask(taskToArchive, taskArray);
-        setTaskArray(arrayAfterDelete);
-        localStorage.setItem('itemsActive', JSON.stringify(arrayAfterDelete));
+        removeAnItemFromArrayFromLocalStorage('tasksActive', taskToDelete);
+        setTasksArray(takeArrayFromLocalStorage('tasksActive'));
     }
 
     const handleEditingTask = (taskEdited, indexOnTaskArray) => {
-        let helpArray = taskArray;
+        let helpArray = tasksArray;
         helpArray[indexOnTaskArray] = taskEdited;
-        setTaskArray(helpArray);
+        setTasksArray(helpArray);
         localStorage.setItem('tasksActive', JSON.stringify(helpArray));
     }
 
     return (
-        <TrackerMonthlyContainer>
-            {taskArray.map((task, index) => {
+        <TrackerMonthlyStyled>
+            {tasksArray.map((task, index) => {
                 return (
                     <div key={task.key}>
                         <TrackerMonthly
@@ -71,7 +66,7 @@ const TasksContainer = () => {
                     </div>
                 )
             })}
-        </TrackerMonthlyContainer>
+        </TrackerMonthlyStyled>
     )
 }
 
