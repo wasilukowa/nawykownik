@@ -24,6 +24,7 @@ export const TrackerMonthly = ({ task, indexOfTask }) => {
             ...taskToShow,
             daysArray: daysArr
         })
+        saveEditedTaskInArrayInLocalStorage('tasksActive', taskToShow, indexOfTask);
     }
 
     useEffect(() => {
@@ -44,7 +45,6 @@ export const TrackerMonthly = ({ task, indexOfTask }) => {
                     <div className='day'>SOB</div>
                     <div className='day'>NIE</div>
                 </div>
-
                 <div className='task-container___calendar'>
                     {daysArr.map((el, index) => {
                         if (el === 0) {
