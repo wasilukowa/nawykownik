@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import {
     takeArrayFromLocalStorage,
     addTaskToAnArrayFromLocalStorage,
-    removeAnItemFromArrayFromLocalStorage
+    removeAnItemFromArrayFromLocalStorage,
 } from '../utilities/localStorageUsage';
 
 const TrackerMonthlyStyled = styled.div`
@@ -31,6 +31,7 @@ const TasksContainer = () => {
 
     const handleArchive = (event, taskToArchive) => {
         event.preventDefault();
+
         addTaskToAnArrayFromLocalStorage('tasksArchive', taskToArchive);
         removeAnItemFromArrayFromLocalStorage('tasksActive', taskToArchive);
         setTasksArray(takeArrayFromLocalStorage('tasksActive'));
