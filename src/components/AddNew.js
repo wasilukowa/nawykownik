@@ -24,7 +24,7 @@ const AddNewStyled = styled.div`
     textarea {
         width: 100%;
         font-family: 'Playfair Regular';
-        color: ${({ theme }) => theme.text};
+        color: ${({ theme }) => theme.colorJustBlack};
         resize: none;
         text-align: center;
         padding: 1em;
