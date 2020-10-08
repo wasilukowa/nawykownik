@@ -34,7 +34,7 @@ export const WrapperMain = styled.div`
 export const WrapperInside = styled.div`
   background-color: ${({ theme }) => theme.background};
   min-height: 80vh;
-  width: 100vh;
+  /* width: 100vh; */
   max-width: 900px;
   min-width: 260px;
   border-radius: 6px;
