@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/nawykownik/static/js/main.e1d84bc7.chunk.js",
-    "main.js.map": "/nawykownik/static/js/main.e1d84bc7.chunk.js.map",
+    "main.js": "/nawykownik/static/js/main.729a98ff.chunk.js",
+    "main.js.map": "/nawykownik/static/js/main.729a98ff.chunk.js.map",
     "runtime-main.js": "/nawykownik/static/js/runtime-main.4f62d029.js",
     "runtime-main.js.map": "/nawykownik/static/js/runtime-main.4f62d029.js.map",
     "static/js/2.e4f4b494.chunk.js": "/nawykownik/static/js/2.e4f4b494.chunk.js",
     "static/js/2.e4f4b494.chunk.js.map": "/nawykownik/static/js/2.e4f4b494.chunk.js.map",
     "index.html": "/nawykownik/index.html",
-    "precache-manifest.9553e58c6d8da7c0e5cc9392250f8477.js": "/nawykownik/precache-manifest.9553e58c6d8da7c0e5cc9392250f8477.js",
+    "precache-manifest.5b7274ba80a333199ba1b6d1f881b19f.js": "/nawykownik/precache-manifest.5b7274ba80a333199ba1b6d1f881b19f.js",
     "service-worker.js": "/nawykownik/service-worker.js",
     "static/js/2.e4f4b494.chunk.js.LICENSE.txt": "/nawykownik/static/js/2.e4f4b494.chunk.js.LICENSE.txt",
     "static/media/LOGO-09.svg": "/nawykownik/static/media/LOGO-09.4b23e636.svg",
@@ -21,6 +21,6 @@
   "entrypoints": [
     "static/js/runtime-main.4f62d029.js",
     "static/js/2.e4f4b494.chunk.js",
-    "static/js/main.e1d84bc7.chunk.js"
+    "static/js/main.729a98ff.chunk.js"
   ]
 }

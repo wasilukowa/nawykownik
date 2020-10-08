@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2a537c300ed30ae2d820e1e157af007e",
+    "revision": "ef4fecc059881b6abe9cd276b56f1d0d",
     "url": "/nawykownik/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/nawykownik/static/js/2.e4f4b494.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b9a4cebc90468fa81059",
-    "url": "/nawykownik/static/js/main.e1d84bc7.chunk.js"
+    "revision": "ff0cb646002bdd815e78",
+    "url": "/nawykownik/static/js/main.729a98ff.chunk.js"
   },
   {
     "revision": "737b91b7e71178761547",
