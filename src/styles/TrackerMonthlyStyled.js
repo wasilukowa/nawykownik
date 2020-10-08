@@ -70,7 +70,7 @@ export const TrackerMonthlyStyled = styled.div`
             display: block;
             height: calc(${props => props.theme.cellSmall} - 10px);
             width: calc(${props => props.theme.cellSmall} - 10px);
-            background-color: silver;
+            background-color: ${({ theme }) => theme.colorHabitNotDone};
             }
         }
 

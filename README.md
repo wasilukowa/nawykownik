@@ -1,6 +1,6 @@
 # Nawykownik App :)
 
-Application as of 07/10/2020 still needs to be finished (work in progress) but most of the functionality is done and Habbit Tracker can be used to track your Good Habits :) 
+Application as of 08/10/2020 still needs to be finished (work in progress) but most of the functionality is done and Habbit Tracker can be used to track your Good Habits :)  Last thing that was added to the project - light and dark theme of the app :)
 
 Demo can be found here:
 https://wasilukowa.github.io/nawykownik/#/
