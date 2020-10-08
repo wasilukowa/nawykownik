@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         font-family: 'Playfair Regular';
-        color: ${props => props.theme.black}
+        color: ${({ theme }) => theme.mint};
     }
     *, *:before, *:after {
         box-sizing: inherit;

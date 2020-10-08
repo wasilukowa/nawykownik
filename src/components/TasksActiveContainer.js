@@ -42,10 +42,6 @@ const TasksContainer = () => {
         setTasksArray(takeArrayFromLocalStorage('tasksActive'));
     }
 
-
-
-
-
     return (
         <TrackerMonthlyStyled>
             {tasksArray.map((task, index) => {

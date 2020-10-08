@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styled, { ThemeProvider } from 'styled-components';
 import { HashRouter, Route } from 'react-router-dom';
-import theme from './styles/theme';
+import { lightTheme, darkTheme } from './styles/theme';
 import GlobalStyle from './styles/GlobalStyles';
 import GlobalFonts from './fonts/fonts';
 
@@ -17,10 +17,21 @@ const WrapperStyled = styled.div`
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
   color: black;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   flex-shrink: 0;
   padding: 2em;
+
+  button {
+    border: none;
+    margin: 10px;
+    font-family: 'Playfair Regular';
+    color: ${({ theme }) => theme.green};
+    font-size: 2em;
+    padding: 20px;
+  }
 
   @media (min-width: 320px) {
     padding: 20px;
@@ -29,7 +40,7 @@ const WrapperStyled = styled.div`
 
 const WrapperInsideStyled = styled.div`
   background-color: white;
-  min-height: 500px;
+  min-height: 90vh;
   width: 100vh;
   max-width: 900px;
   min-width: 260px;
@@ -42,15 +53,17 @@ const WrapperInsideStyled = styled.div`
       0 41.8px 33.4px rgba(0, 0, 0, 0.05),
       0 100px 80px rgba(0, 0, 0, 0.07);
   padding: 20px;
-
-  @media (max-width: 320px) {
-    
-  }
 `;
 
 function App() {
+  const [theme, setTheme] = useState('light');
+
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+  }
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <WrapperStyled>
         <GlobalFonts />
         <GlobalStyle />
@@ -62,6 +75,7 @@ function App() {
             <Route exact path='/archiwum' component={Archive} />
           </WrapperInsideStyled>
         </HashRouter>
+        <button onClick={themeToggler}>ZMIEŃ kolorystyku!!</button>
       </WrapperStyled>
     </ThemeProvider>
   );
