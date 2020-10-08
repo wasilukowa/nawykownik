@@ -11,13 +11,13 @@ export const TrackerMonthlyStyled = styled.div`
         font-family: 'Playfair Regular';
         padding-top: 10px;
         font-size: 1.4rem;
-        color: ${props => props.theme.black};
+        color: ${({ theme }) => theme.text};
     }
     .task-title {
         font-family: 'Playfair Bold';
         text-align: center;
         font-size: 2em;
-        color: ${props => props.theme.green};
+        color: ${({ theme }) => theme.colorMain};
         padding: 10px 20px;
     }
     .task-calendar{
@@ -47,20 +47,20 @@ export const TrackerMonthlyStyled = styled.div`
 
         .single-day {
         padding: 3px;
-        background-color: white;
+        background-color: ${({ theme }) => theme.background};
         font-size: 1.4em;
-        color: black;
+        color: ${({ theme }) => theme.text};
         padding: 3px;
         text-align: right;
         cursor: pointer;
 
         &.habit-to-be-checked {
-            border: 1.5px solid ${props => props.theme.black};
+            border: 1.5px solid ${({ theme }) => theme.text};
         }
 
         &.habit-not-done {
             padding: 3px;
-            border: 1.5px solid ${props => props.theme.black};
+            border: 1.5px solid ${({ theme }) => theme.text};
             display: flex;
             justify-content: center;
             align-items: center;
@@ -75,7 +75,7 @@ export const TrackerMonthlyStyled = styled.div`
         }
 
         &.habit-done {
-            border: 1.5px solid ${props => props.theme.black};
+            border: 1.5px solid ${({ theme }) => theme.text};
             display: flex;
             justify-content: center;
             align-items: center;
@@ -85,24 +85,24 @@ export const TrackerMonthlyStyled = styled.div`
             display: block;
             height: calc(${props => props.theme.cellSmall} - 10px);
             width: calc(${props => props.theme.cellSmall} - 10px);
-            background-color: ${props => props.theme.green};
+            background-color: ${({ theme }) => theme.colorMain};
             }
         }
         }
 
         .un-active {
-        background-color: white;
+        background-color: ${({ theme }) => theme.background};
         font-size: 1.4em;
         color: grey;
         padding: 3px;
         text-align: right;
         cursor: pointer;
-        border: 1.5px solid grey;
+        border: 1.5px solid ${({ theme }) => theme.textLighter};
         }
     }
     }
     .task-container__buttons {
-        color: lightGrey;
+        color: ${({ theme }) => theme.textLighter};
         align-self: flex-end;
         display: flex;
         justify-content: flex-end;

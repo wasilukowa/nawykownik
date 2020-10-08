@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-
-import styled, { ThemeProvider } from 'styled-components';
 import { HashRouter, Route } from 'react-router-dom';
+
+import { ThemeProvider } from 'styled-components';
+import { WrapperMain, WrapperInside } from './styles/WrapersStyle';
 import { lightTheme, darkTheme } from './styles/theme';
 import GlobalStyle from './styles/GlobalStyles';
 import GlobalFonts from './fonts/fonts';
@@ -11,72 +12,28 @@ import Home from './components/Home';
 import AddNew from './components/AddNew';
 import Archive from './components/Archive';
 
-
-const WrapperStyled = styled.div`
-  min-height: 100vh;
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
-  color: black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  flex-shrink: 0;
-  padding: 2em;
-
-  button {
-    border: none;
-    margin: 10px;
-    font-family: 'Playfair Regular';
-    color: ${({ theme }) => theme.green};
-    font-size: 2em;
-    padding: 20px;
-  }
-
-  @media (min-width: 320px) {
-    padding: 20px;
-  }
-`;
-
-const WrapperInsideStyled = styled.div`
-  background-color: white;
-  min-height: 90vh;
-  width: 100vh;
-  max-width: 900px;
-  min-width: 260px;
-  border-radius: 10px;
-  box-shadow:
-      0 2.8px 2.2px rgba(0, 0, 0, 0.02),
-      0 6.7px 5.3px rgba(0, 0, 0, 0.028),
-      0 12.5px 10px rgba(0, 0, 0, 0.035),
-      0 22.3px 17.9px rgba(0, 0, 0, 0.042),
-      0 41.8px 33.4px rgba(0, 0, 0, 0.05),
-      0 100px 80px rgba(0, 0, 0, 0.07);
-  padding: 20px;
-`;
-
 function App() {
   const [theme, setTheme] = useState('light');
-
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
   }
-
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <WrapperStyled>
+      <WrapperMain>
         <GlobalFonts />
         <GlobalStyle />
         <HashRouter>
-          <WrapperInsideStyled>
+          <WrapperInside>
             <Navigation />
             <Route exact path='/' component={Home} />
             <Route exact path='/dodajnowy' component={AddNew} />
             <Route exact path='/archiwum' component={Archive} />
-          </WrapperInsideStyled>
+          </WrapperInside>
         </HashRouter>
-        <button onClick={themeToggler}>ZMIEŃ kolorystyku!!</button>
-      </WrapperStyled>
+        <button onClick={themeToggler}>
+          ZMIEŃ kolorystyku!!
+        </button>
+      </WrapperMain>
     </ThemeProvider>
   );
 }

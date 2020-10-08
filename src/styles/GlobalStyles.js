@@ -7,12 +7,13 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         font-family: 'Playfair Regular';
-        color: ${({ theme }) => theme.mint};
+        color: ${({ theme }) => theme.text};
     }
     *, *:before, *:after {
         box-sizing: inherit;
         padding: 0;
         margin: 0;
+        color: ${({ theme }) => theme.text};
     }
 `;
 

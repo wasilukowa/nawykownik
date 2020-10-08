@@ -15,12 +15,11 @@ const HomeStyled = styled.div`
     button {
         outline: none;
         border: none;
-        background-color: ${props => props.theme.mint};
-        color: ${props => props.theme.green};
+        background-color: ${({ theme }) => theme.colorSecondary};
+        color: ${({ theme }) => theme.colorMain};
         font-family: 'Playfair Bold';
         font-size: 1.6em;
-        margin-top: 1em;
-        padding: 1em;
+        padding: 1em 2em;
         margin: 1em;
         cursor: pointer;
     }

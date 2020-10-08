@@ -15,12 +15,12 @@ const NavigationContainer = styled.nav`
     padding-bottom: 2em;
     .nav__router-link {
         text-decoration: none;
-        color: ${props => props.theme.black};
+        color: ${({ theme }) => theme.text};
         padding: 0.6em;
         font-size: 1.4em;
         transition: .7s;
         &:hover{
-            color: ${props => props.theme.green};
+            color: ${({ theme }) => theme.colorMain};
             transform: scale(1.1);
         }
     }
@@ -39,7 +39,7 @@ const NavigationContainer = styled.nav`
         }
     .nav__router-link-active{
         font-family: 'Playfair Bold';
-        color: ${props => props.theme.green};
+        color: ${({ theme }) => theme.colorMain};
         transform: scale(1.2);
     }
 

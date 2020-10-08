@@ -5,5 +5,5 @@ export const CommentMessage = styled.div`
     text-align: center;
     font-size: 2em;
     padding-top: 2em;
-    color: ${props => props.theme.grey}
+    color: ${({ theme }) => theme.colorSecondary}
 `;

@@ -16,8 +16,8 @@ const TrackerMonthlyStyled = styled.div`
     }
     button {
         border: none;
-        background-color: ${props => props.theme.mint};
-        color: ${props => props.theme.black};
+        background-color: ${({ theme }) => theme.colorSecondary};
+        color: ${({ theme }) => theme.text};
         font-family: 'Playfair Regilar';
         padding: 1em 2em;
         font-size: 2em;

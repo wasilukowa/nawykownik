@@ -9,16 +9,16 @@ const ArchiveStyled = styled.div`
     justify-content: space-between;
     align-items: center;
     height: calc(100% - 100px);
+
     button {
         outline: none;
         border: none;
-        background-color: ${props => props.theme.mint};
-        color: ${props => props.theme.green};
+        background-color: ${({ theme }) => theme.colorSecondary};
+        color: ${({ theme }) => theme.colorMain};
         font-family: 'Playfair Bold';
         font-size: 1.6em;
         margin-top: 1em;
-        padding: 1em;
-        margin: 1em;
+        padding: 0.6em 1.6em;
         cursor: pointer;
     }
 `;
@@ -42,7 +42,7 @@ const Archive = () => {
                     <p>Nie masz nic zarchiwizowanego micz</p>
                 </MessageStyled>
             }
-            <button onClick={e => handleResetTasksArchive(e)}>WYRZUĆ, ZAPOMNIJ ARCHIWUM</button>
+            <button onClick={e => handleResetTasksArchive(e)}>Wyrzuć, zapomnij z archiwum</button>
         </ArchiveStyled>
     )
 }

@@ -10,17 +10,17 @@ export const MessageStyled = styled.div`
         padding-top: 4em;
         font-family: 'Playfair Bold';
         font-size: 2em;
-        color: ${props => props.theme.green};
+        color: ${({ theme }) => theme.colorMain};
         text-align: center;
     }
     .nav__router-link {
         text-decoration: none;
-        color: ${props => props.theme.black};
+        color: ${({ theme }) => theme.text};
         padding: 0.6em;
         font-size: 1.4em;
         transition: .7s;
         &:hover{
-            color: ${props => props.theme.green};
+            color: ${({ theme }) => theme.colorMain};
             transform: scale(1.1);
         }
     }

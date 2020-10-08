@@ -10,36 +10,38 @@ import {
 
 const AddNewStyled = styled.div`
     width: 100%;
-    background-color: ${props => props.theme.green};
+    background-color: ${({ theme }) => theme.colorMain};
     display: flex;
     flex-direction: column;
     padding: 20px;
     h3 {
         font-family: 'Playfair Bold';
         font-size: 1.8em;
-        color: white;
+        color: ${({ theme }) => theme.textInverse};
         text-align: center;
         margin-bottom: 20px;
     }
     textarea {
         width: 100%;
         font-family: 'Playfair Regular';
-        color: ${props => props.theme.black};
+        color: ${({ theme }) => theme.text};
         resize: none;
         text-align: center;
         padding: 1em;
         font-size: 1.4em;
         outline: none;
+        border-radius: 10px;
     }
     button {
         outline: none;
         border: none;
-        background-color: ${props => props.theme.mint};
-        color: ${props => props.theme.green};
+        background-color: ${({ theme }) => theme.colorSecondary};
+        color: ${({ theme }) => theme.colorMain};
         font-family: 'Playfair Bold';
         font-size: 2em;
         padding: 1em;
         width: 100%;
+        margin: 0;
         cursor: pointer;
     }
 
