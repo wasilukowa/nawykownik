@@ -21,16 +21,12 @@ export const TrackerMonthly = ({ task, indexOfTask }) => {
             helpArr[index] = 1;
             setDayStatus([...helpArr])
         }
-        setTask({
-            ...taskToDisplay,
-            daysArray: daysArr
-        });
+        let taskToBeChanged = taskToDisplay;
+        taskToBeChanged.daysArray = helpArr;
+        saveEditedTaskInArrayInLocalStorage('tasksActive', taskToBeChanged, indexOfTask);
+        setTask(taskToBeChanged);
     }
 
-    const handleMainTest = (dayToBeChanged, index) => {
-        handleStatusChange(dayToBeChanged, index);
-        saveEditedTaskInArrayInLocalStorage('tasksActive', taskToDisplay, indexOfTask);
-    }
 
     return (
         <TrackerMonthlyStyled>
@@ -55,7 +51,7 @@ export const TrackerMonthly = ({ task, indexOfTask }) => {
                                 return <div
                                     key={index}
                                     className='single-day habit-to-be-checked'
-                                    onClick={() => handleMainTest(el, index)}
+                                    onClick={() => handleStatusChange(el, index)}
                                 >
                                     {index - taskToDisplay.startingDay + 1}
                                 </div>
@@ -69,12 +65,12 @@ export const TrackerMonthly = ({ task, indexOfTask }) => {
                         } else if (el === 2) {
                             return <div key={index}
                                 className='single-day habit-not-done'
-                                onClick={() => handleMainTest(el, index)}>
+                                onClick={() => handleStatusChange(el, index)}>
                             </div>
                         } else {
                             return <div key={index}
                                 className='single-day habit-done'
-                                onClick={() => handleMainTest(el, index)}>
+                                onClick={() => handleStatusChange(el, index)}>
                             </div>
                         }
                     })}

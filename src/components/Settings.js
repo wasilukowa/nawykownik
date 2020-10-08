@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { TasksArrayContext } from '../context/TasksArrayContext'
 
 const SettingsContainerStyled = styled.div`
     padding-top: 4em;
@@ -17,23 +16,29 @@ const SettingsContainerStyled = styled.div`
         font-size: 1.6em;
         margin-top: 1em;
         padding: 1em;
+        margin: 1em;
         cursor: pointer;
+
     }
 `;
 
 const Settings = () => {
 
-    const { setTaskArray } = useContext(TasksArrayContext);
-    const handleResetLocalStorage = e => {
-        localStorage.clear('tasks');
-        setTaskArray([]);
-        console.log('Wyczyszczone, zapomniane!');
+    const handleResetTasksActive = e => {
+        localStorage.removeItem('tasksActive');
+        console.log('Wyczyszczone, zapomniane! Aktywne');
+    }
+
+    const handleResetTasksArchive = e => {
+        localStorage.removeItem('tasksArchive');
+        console.log('Wyczyszczone, zapomniane! Archiwum');
     }
 
     return (
         <SettingsContainerStyled>
             <p> Usunięcie wszelkich dotychczas wprowadzonych nawyków: </p>
-            <button onClick={e => handleResetLocalStorage(e)}>WYRZUĆ, ZAPOMNIJ</button>
+            <button onClick={e => handleResetTasksActive(e)}>WYRZUĆ, ZAPOMNIJ NAWYKI AKTYWNE</button>
+            <button onClick={e => handleResetTasksArchive(e)}>WYRZUĆ, ZAPOMNIJ ARCHIWUM</button>
         </SettingsContainerStyled>
     )
 }

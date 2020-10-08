@@ -12,9 +12,6 @@ import AddNew from './components/AddNew';
 import Archive from './components/Archive';
 import Settings from './components/Settings';
 
-import TasksArrayContextProvider from './context/TasksArrayContext';
-import ArchiveTasksArrayContextProvider from './context/ArchiveTasksContext';
-
 
 const WrapperStyled = styled.div`
   height: 100vh;
@@ -55,23 +52,19 @@ const WrapperInsideStyled = styled.div`
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <ArchiveTasksArrayContextProvider>
-        <TasksArrayContextProvider>
-          <WrapperStyled>
-            <GlobalFonts />
-            <GlobalStyle />
-            <HashRouter>
-              <WrapperInsideStyled>
-                <Navigation />
-                <Route exact path='/' component={Home} />
-                <Route exact path='/dodajnowy' component={AddNew} />
-                <Route exact path='/archiwum' component={Archive} />
-                <Route exact path='/ustawienia' component={Settings} />
-              </WrapperInsideStyled>
-            </HashRouter>
-          </WrapperStyled>
-        </TasksArrayContextProvider>
-      </ArchiveTasksArrayContextProvider>
+      <WrapperStyled>
+        <GlobalFonts />
+        <GlobalStyle />
+        <HashRouter>
+          <WrapperInsideStyled>
+            <Navigation />
+            <Route exact path='/' component={Home} />
+            <Route exact path='/dodajnowy' component={AddNew} />
+            <Route exact path='/archiwum' component={Archive} />
+            <Route exact path='/ustawienia' component={Settings} />
+          </WrapperInsideStyled>
+        </HashRouter>
+      </WrapperStyled>
     </ThemeProvider>
   );
 }
