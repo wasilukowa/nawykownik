@@ -18,7 +18,6 @@ const SettingsContainerStyled = styled.div`
         padding: 1em;
         margin: 1em;
         cursor: pointer;
-
     }
 `;
 
@@ -37,7 +36,7 @@ const Settings = () => {
     return (
         <SettingsContainerStyled>
             <p> Usunięcie wszelkich dotychczas wprowadzonych nawyków: </p>
-            <button onClick={e => handleResetTasksActive(e)}>WYRZUĆ, ZAPOMNIJ NAWYKI AKTYWNE</button>
+
             <button onClick={e => handleResetTasksArchive(e)}>WYRZUĆ, ZAPOMNIJ ARCHIWUM</button>
         </SettingsContainerStyled>
     )

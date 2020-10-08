@@ -31,7 +31,6 @@ const TasksContainer = () => {
 
     const handleArchive = (event, taskToArchive) => {
         event.preventDefault();
-
         addTaskToAnArrayFromLocalStorage('tasksArchive', taskToArchive);
         removeAnItemFromArrayFromLocalStorage('tasksActive', taskToArchive);
         setTasksArray(takeArrayFromLocalStorage('tasksActive'));
@@ -42,6 +41,10 @@ const TasksContainer = () => {
         removeAnItemFromArrayFromLocalStorage('tasksActive', taskToDelete);
         setTasksArray(takeArrayFromLocalStorage('tasksActive'));
     }
+
+
+
+
 
     return (
         <TrackerMonthlyStyled>

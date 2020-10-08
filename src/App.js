@@ -10,11 +10,10 @@ import Navigation from './components/Navigation';
 import Home from './components/Home';
 import AddNew from './components/AddNew';
 import Archive from './components/Archive';
-import Settings from './components/Settings';
 
 
 const WrapperStyled = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
   color: black;
   display: flex;
@@ -61,7 +60,6 @@ function App() {
             <Route exact path='/' component={Home} />
             <Route exact path='/dodajnowy' component={AddNew} />
             <Route exact path='/archiwum' component={Archive} />
-            <Route exact path='/ustawienia' component={Settings} />
           </WrapperInsideStyled>
         </HashRouter>
       </WrapperStyled>

@@ -96,12 +96,6 @@ const Home = () => {
                 activeClassName='nav__router-link-active'
                 exact to={"/archiwum"}>
                 Archiwum
-                    </NavLink>
-            <NavLink
-                className='nav__router-link nav__flex-menu'
-                activeClassName='nav__router-link-active'
-                exact to={"/ustawienia"}>
-                Ustawienia
             </NavLink>
         </NavigationContainer >
     )
