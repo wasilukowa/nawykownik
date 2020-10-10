@@ -31,7 +31,7 @@ function App() {
           </WrapperInside>
         </HashRouter>
         <button onClick={themeToggler}>
-          ZMIEŃ kolorystyku!!
+          {theme === 'light' ? 'Ciemna kolorystyka' : 'Jasna kolorystyka'}
         </button>
       </WrapperMain>
     </ThemeProvider>

@@ -18,10 +18,22 @@ const HomeStyled = styled.div`
         background-color: ${({ theme }) => theme.colorSecondary};
         color: ${({ theme }) => theme.colorMain};
         font-family: 'Playfair Bold';
-        font-size: 1.6em;
-        padding: 1em 2em;
+        font-size: 1.2em;
+        padding: 0.6em 1em;
         margin: 1em;
         cursor: pointer;
+    }
+    @media (min-width: 250px) {
+        button {
+            font-size: 1.6em;
+            padding: 1em 1.6em;
+        }
+    }
+    @media (min-width: 400px) {
+        button {
+            font-size: 1.8em;
+            padding: 1em 1em;
+        }
     }
 `;
 const Home = () => {
@@ -40,15 +52,15 @@ const Home = () => {
                 <TasksContainer />
                 :
                 <MessageStyled>
-                    <p>Nie masz żodnych nawyków do monitorowania!</p>
+                    <p>Nie masz żadnych nawyków do monitorowania</p>
                     <NavLink
                         className='nav__router-link nav__flex-menu'
                         exact to='/dodajnowy'
                     >
-                        Dodaj coś! :)
+                        Dodaj nowy nawyk
                     </NavLink>
                 </MessageStyled>}
-            <button onClick={e => handleResetTasksActive(e)}>WYRZUĆ, ZAPOMNIJ NAWYKI AKTYWNE</button>
+            <button onClick={e => handleResetTasksActive(e)}>Usuń wszystkie aktywne nawyki</button>
         </HomeStyled>
     )
 }

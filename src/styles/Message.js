@@ -9,7 +9,7 @@ export const MessageStyled = styled.div`
     p {
         padding-top: 4em;
         font-family: 'Playfair Bold';
-        font-size: 2em;
+        font-size: 1.2em;
         color: ${({ theme }) => theme.colorMain};
         text-align: center;
     }
@@ -17,11 +17,28 @@ export const MessageStyled = styled.div`
         text-decoration: none;
         color: ${({ theme }) => theme.text};
         padding: 0.6em;
-        font-size: 1.4em;
+        font-size: 1.2em;
         transition: .7s;
+        text-align: center;
         &:hover{
             color: ${({ theme }) => theme.colorMain};
             transform: scale(1.1);
+        }
+    }
+    @media (min-width: 250px) {
+        p {
+            font-size: 1.8em;
+        }
+        .nav__router-link {
+            font-size: 1.6em;
+        }
+    }
+    @media (min-width: 400px) {
+        p {
+            font-size: 2.2em;
+        }
+        .nav__router-link {
+            font-size: 2.2em;
         }
     }
 `;
