@@ -16,7 +16,14 @@ export const lightTheme = {
     gapMedium: '10px',
     cellMedium: '35px',
     gapBig: '10px',
-    cellBig: '45px'
+    cellBig: '45px',
+
+    // breakpoints:
+    sizeFirst: '320px',
+    sizeSecond: '480px',
+    sizeFourth: '600px',
+    sizeFifth: '768px',
+    sizeSix: '992px'
 }
 
 export const darkTheme = {
@@ -37,5 +44,12 @@ export const darkTheme = {
     gapMedium: '10px',
     cellMedium: '35px',
     gapBig: '10px',
-    cellBig: '45px'
+    cellBig: '45px',
+
+    // breakpoints:
+    sizeFirst: '320px',
+    sizeSecond: '480px',
+    sizeFourth: '600px',
+    sizeFifth: '768px',
+    sizeSix: '992px'
 }

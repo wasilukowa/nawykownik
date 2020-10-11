@@ -45,16 +45,7 @@ const AddNewStyled = styled.div`
         cursor: pointer;
     }
 
-    @media (min-width: 480px){
-        h3 {
-            font-size: 2em;
-        }
-        textarea {
-            font-size: 1.8em;
-        }
-    }
-
-    @media (min-width: 480px){
+    @media (min-width: ${({ theme }) => theme.sizeSecond}){
         h3 {
             font-size: 2.2em;
         }
@@ -63,7 +54,7 @@ const AddNewStyled = styled.div`
         }
     }
 
-    @media (min-width: 550px){
+    @media (min-width: ${({ theme }) => theme.sizeFourth}){
         h3 {
             font-size: 2.6em;
         }

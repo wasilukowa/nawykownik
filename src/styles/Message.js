@@ -25,7 +25,7 @@ export const MessageStyled = styled.div`
             transform: scale(1.1);
         }
     }
-    @media (min-width: 250px) {
+    @media (min-width: ${({ theme }) => theme.sizeFirst}) {
         p {
             font-size: 1.8em;
         }
@@ -33,7 +33,7 @@ export const MessageStyled = styled.div`
             font-size: 1.6em;
         }
     }
-    @media (min-width: 400px) {
+    @media (min-width: ${({ theme }) => theme.sizeSecond}) {
         p {
             font-size: 2.2em;
         }

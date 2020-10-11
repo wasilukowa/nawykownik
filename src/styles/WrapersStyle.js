@@ -28,7 +28,7 @@ export const WrapperMain = styled.div`
     box-shadow: ${({ theme }) => theme.boxShadow};
   }
 
-  @media (min-width: 320px) {
+  @media (min-width: ${({ theme }) => theme.sizeFirst}) {
     padding: 20px;
   }
 `;
@@ -40,6 +40,10 @@ export const WrapperInside = styled.div`
   max-width: 1200px;
   border-radius: 6px;
   box-shadow: ${({ theme }) => theme.boxShadow};
-  padding: 20px;
+  padding: 10px;
   margin-bottom: 0.6em;
+
+  @media (min-width: ${({ theme }) => theme.sizeFirst}) {
+    padding: 20px;
+  }
 `;

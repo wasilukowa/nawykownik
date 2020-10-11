@@ -22,14 +22,22 @@ const HomeStyled = styled.div`
         padding: 0.6em 1em;
         margin: 1em;
         cursor: pointer;
+
+        &.button-text{
+            background-color: transparent;
+            box-shadow: none;
+            padding: 0;
+            margin: 0;
+            color: ${({ theme }) => theme.colorSecondary};
+        }
     }
-    @media (min-width: 250px) {
+    @media (min-width: ${({ theme }) => theme.sizeFirst}) {
         button {
             font-size: 1.6em;
             padding: 1em 1.6em;
         }
     }
-    @media (min-width: 400px) {
+    @media (min-width: ${({ theme }) => theme.sizeSecond}) {
         button {
             font-size: 1.8em;
             padding: 1em 1em;
@@ -60,7 +68,7 @@ const Home = () => {
                         Dodaj nowy nawyk
                     </NavLink>
                 </MessageStyled>}
-            <button onClick={e => handleResetTasksActive(e)}>Usuń wszystkie aktywne nawyki</button>
+            <button className='button-text' onClick={e => handleResetTasksActive(e)}>Usuń wszystkie aktywne nawyki</button>
         </HomeStyled>
     )
 }

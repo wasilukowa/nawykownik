@@ -28,14 +28,14 @@ export const TrackerMonthlyStyled = styled.div`
     }
     .task-calendar-days-names {
         display: grid;
-        grid-template-columns: repeat(7, ${props => props.theme.cellSmall});
-        grid-template-rows: ${props => props.theme.cellSmall};
-        gap: ${props => props.theme.gapSmall};
+        grid-template-columns: repeat(7, ${({ theme }) => theme.cellSmall});
+        grid-template-rows: ${({ theme }) => theme.cellSmall};
+        gap: ${({ theme }) => theme.gapSmall};
 
         .day {
         font-family: Arial, sans-serif;
         font-size: 1.2em;
-        color: ${props => props.theme.mint};
+        color: ${({ theme }) => theme.colorSecondary};
         align-self: center;
         }
     }
