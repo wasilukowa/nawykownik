@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 
+import { saveArrayToLocalStorage, takeArrayFromLocalStorage } from './utilities/localStorageUsage';
+
 import { ThemeProvider } from 'styled-components';
 import { WrapperMain, WrapperInside } from './styles/WrapersStyle';
 import { lightTheme, darkTheme } from './styles/theme';
@@ -13,12 +15,15 @@ import AddNew from './components/AddNew';
 import Archive from './components/Archive';
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(takeArrayFromLocalStorage('theme'));
+
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
+    theme === 'light' ? saveArrayToLocalStorage('theme', 'dark') : saveArrayToLocalStorage('theme', 'light');
   }
+
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <WrapperMain>
         <GlobalFonts />
         <GlobalStyle />

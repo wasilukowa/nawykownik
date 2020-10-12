@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import styled from 'styled-components';
 import { MessageStyled } from '../styles/Message';
 import TasksContainer from './TasksActiveContainer';
 import { takeArrayFromLocalStorage } from '../utilities/localStorageUsage';
-import styled from 'styled-components';
 
 const HomeStyled = styled.div`
     display: flex;
