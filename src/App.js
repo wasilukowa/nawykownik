@@ -14,8 +14,12 @@ import Home from './components/Home';
 import AddNew from './components/AddNew';
 import Archive from './components/Archive';
 
+import Legend from './components/UsageLegend';
+
 function App() {
   const [theme, setTheme] = useState(takeArrayFromLocalStorage('theme'));
+
+  const [legendIsOn, setLegendIsOn] = useState(true);
 
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
@@ -35,9 +39,15 @@ function App() {
             <Route exact path='/archiwum' component={Archive} />
           </WrapperInside>
         </HashRouter>
-        <button onClick={themeToggler}>
-          {theme === 'light' ? 'Ciemna kolorystyka' : 'Jasna kolorystyka'}
+        <div className='button-container'>
+          <button onClick={themeToggler}>
+            {theme === 'light' ? 'Ciemna kolorystyka' : 'Jasna kolorystyka'}
+          </button>
+          <button onClick={() => setLegendIsOn(true)}>
+            Pokaż krótkie intro
         </button>
+        </div>
+        {legendIsOn && <Legend close={setLegendIsOn} />}
       </WrapperMain>
     </ThemeProvider>
   );

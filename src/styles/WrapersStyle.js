@@ -12,9 +12,16 @@ export const WrapperMain = styled.div`
   flex-shrink: 1;
   padding: 0.4em;
 
+.button-container{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
   button {
     width: 100%;
     max-width: 400px;
+    /* min-width: 200px; */
+    margin: 2px;
     min-height: 40px;
     padding: 5px 10px;
     border: none;
