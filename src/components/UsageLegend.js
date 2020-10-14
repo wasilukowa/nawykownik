@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { saveArrayToLocalStorage } from '../utilities/localStorageUsage';
 
 const LegendStyled = styled.div`
     position: fixed;
@@ -27,6 +28,7 @@ const LegendStyled = styled.div`
 const Legend = ({ close }) => {
     const handleClose = () => {
         close(false);
+        saveArrayToLocalStorage('legendIsOn', false);
     }
     return (
         <LegendStyled >

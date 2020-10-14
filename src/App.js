@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 
 import { saveArrayToLocalStorage, takeArrayFromLocalStorage } from './utilities/localStorageUsage';
@@ -17,14 +17,17 @@ import Archive from './components/Archive';
 import Legend from './components/UsageLegend';
 
 function App() {
-  const [theme, setTheme] = useState(takeArrayFromLocalStorage('theme'));
 
-  const [legendIsOn, setLegendIsOn] = useState(true);
+
+  const [theme, setTheme] = useState(takeArrayFromLocalStorage('theme'));
+  const [legendIsOn, setLegendIsOn] = useState(takeArrayFromLocalStorage('legendIsOn'));
 
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
     theme === 'light' ? saveArrayToLocalStorage('theme', 'dark') : saveArrayToLocalStorage('theme', 'light');
   }
+
+
 
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
@@ -47,7 +50,7 @@ function App() {
             Pokaż krótkie intro
         </button>
         </div>
-        {legendIsOn && <Legend close={setLegendIsOn} />}
+        {(legendIsOn === true) && <Legend close={setLegendIsOn} />}
       </WrapperMain>
     </ThemeProvider>
   );

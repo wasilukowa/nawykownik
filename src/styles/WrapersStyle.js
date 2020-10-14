@@ -16,6 +16,7 @@ export const WrapperMain = styled.div`
   display: flex;
   justify-content: space-around;
   width: 100%;
+  max-width: 1200px;
 }
   button {
     width: 100%;
