@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 
 import { saveArrayToLocalStorage, takeArrayFromLocalStorage } from './utilities/localStorageUsage';
@@ -14,7 +14,7 @@ import Home from './components/Home';
 import AddNew from './components/AddNew';
 import Archive from './components/Archive';
 
-import Legend from './components/UsageLegend';
+import Legend from './components/Legend';
 
 function App() {
 
@@ -27,7 +27,10 @@ function App() {
     theme === 'light' ? saveArrayToLocalStorage('theme', 'dark') : saveArrayToLocalStorage('theme', 'light');
   }
 
-
+  const showLegend = () => {
+    setLegendIsOn(true);
+    saveArrayToLocalStorage('legendIsOn', true);
+  }
 
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
@@ -46,8 +49,8 @@ function App() {
           <button onClick={themeToggler}>
             {theme === 'light' ? 'Ciemna kolorystyka' : 'Jasna kolorystyka'}
           </button>
-          <button onClick={() => setLegendIsOn(true)}>
-            Pokaż krótkie intro
+          <button onClick={showLegend}>
+            Pokaż instrukcję obsługi
         </button>
         </div>
         {(legendIsOn === true) && <Legend close={setLegendIsOn} />}

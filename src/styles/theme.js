@@ -1,6 +1,7 @@
 export const lightTheme = {
     backgroundLinear: 'linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%)',
     background: '#ffffff',
+    backgroundOpacity: 'rgba(255,255,255,0.8)',
     text: '#2C3134',
     textLighter: '#999999',
     textInverse: '#F0F0F0',
@@ -29,6 +30,7 @@ export const lightTheme = {
 export const darkTheme = {
     backgroundLinear: 'linear-gradient(to top, #292929 0%, #222222 100%)',
     background: '#0D0D0B',
+    backgroundOpacity: 'rgba(13,13,11,0.8)',
     text: '#F0F0F0',
     textLighter: '#999999',
     textInverse: '#2C3134',
