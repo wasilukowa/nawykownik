@@ -93,7 +93,7 @@ export const TrackerMonthlyStyled = styled.div`
         .un-active {
         background-color: ${({ theme }) => theme.background};
         font-size: 1.4em;
-        color: grey;
+        color: ${({ theme }) => theme.textLighter};
         padding: 3px;
         text-align: right;
         cursor: pointer;
