@@ -118,7 +118,44 @@ const LegendStyled = styled.div`
         }
     }
 
+    @media (min-width: ${({ theme }) => theme.sizeSecond}) {
+        .legend-subcontainer {
+            max-width: 70vw;
+            /* max-height: 70vw; */
+        }
+    }
 
+    @media (min-width: ${({ theme }) => theme.sizeFifth}) {
+        .legend-subcontainer {
+            max-width: 80vw;
+            max-height: 80vw;
+            padding: 2em;
+        }
+        .legend__title{
+            font-size: 2.6em;
+        }
+        .legend__text {
+            margin-top: 0.8em;
+            font-size: 1.6em;
+        }
+        .legend__row {
+            margin: 10px 10px 0 0;
+            .legend-square {
+                height: ${props => props.theme.cellMedium};
+                width: ${props => props.theme.cellMedium};
+                &.not-done, &.done{
+                    &::before{
+                        height: calc(${props => props.theme.cellMedium} - 10px);
+                        width: calc(${props => props.theme.cellMedium} - 10px);
+                    }
+                }
+                &.not-checked, &.un-active {
+                    font-size: 1em;
+                }
+            }
+            
+        }
+    }
 `;
 
 const Legend = ({ close }) => {

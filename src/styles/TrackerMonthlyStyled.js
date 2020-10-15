@@ -149,7 +149,7 @@ export const TrackerMonthlyStyled = styled.div`
         }
     }
 
-    @media (min-width: 650px) {
+    @media (min-width: ${({ theme }) => theme.sizeFourth}) {
         .task-title {
             font-size: 3em;
         }
